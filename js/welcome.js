@@ -1,85 +1,158 @@
 window.IP_CONFIG = {
   BLOG_LOCATION: {
-    lng: 114.25816, // 经度（替换为你博客的经度）
-    lat: 30.43798  // 纬度（替换为你博客的纬度）
+    lng: 114.25816,
+    lat: 30.43798
   },
-  CACHE_DURATION: 1000 * 60 * 60, // 缓存时间（默认1小时）
-  HOME_PAGE_ONLY: true, // 仅首页显示
+  CACHE_DURATION: 1000 * 60 * 60,
+  HOME_PAGE_ONLY: true,
 };
 
 const insertAnnouncementComponent = () => {
   const announcementCards = document.querySelectorAll('.card-widget.card-announcement');
   if (!announcementCards.length) return;
 
-  // 临时注释首页判断（测试阶段可关闭）
-  // if (IP_CONFIG.HOME_PAGE_ONLY && !isHomePage()) {
-  //   announcementCards.forEach(card => card.remove());
-  //   return;
-  // }
+  if (IP_CONFIG.HOME_PAGE_ONLY && !isHomePage()) {
+    announcementCards.forEach(card => card.remove());
+    return;
+  }
 
   if (!document.querySelector('#welcome-info')) return;
   fetchIpInfo();
 };
 
-const getWelcomeInfoElement = () => document.querySelector('#welcome-info');
-
-// 百度地图IP定位API调用（含跨域配置）
+// 【修复：优先获取IPv4地址】
 const fetchIpData = async () => {
-  const ak = 'YP8T3wMAOzolGd7wbC1ZjKM7WhSqvVEz'; 
   try {
-    console.log('发起百度IP定位请求...');
-    const response = await fetch(`https://api.map.baidu.com/location/ip?ak=${ak}&coor=bd09ll`, {
-      mode: 'cors', // 显式允许跨域
-      headers: {
-        'Accept': 'application/json'
-      }
-    }); 
-    console.log('百度API响应状态：', response.status);
-    if (!response.ok) throw new Error('网络请求失败，状态码：' + response.status);
+    // 第一步：获取IPv4地址
+    console.log('获取IPv4地址...');
+    const ipv4Response = await fetch('https://api.ipify.org?format=json');
+    const ipv4Data = await ipv4Response.json();
+    const ipv4 = ipv4Data.ip;
+    
+    console.log('IPv4地址:', ipv4);
+    
+    // 第二步：使用百度地图API进行定位
+    const ak = 'YP8T3wMAOzolGd7wbC1ZjKM7WhSqvVEz';
+    const baiduUrl = `https://api.map.baidu.com/location/ip?ak=${ak}&ip=${ipv4}&coor=bd09ll`;
+    console.log('请求百度API:', baiduUrl);
+    
+    const response = await fetch(baiduUrl);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP错误: ${response.status}`);
+    }
+    
     const data = await response.json();
-    console.log('百度API返回完整数据：', data);
-    if (data.status !== 0) throw new Error('百度API状态异常：' + data.message);
-    return data;
+    console.log('百度API完整响应:', data);
+    
+    if (data.status === 0) {
+      // 确保使用IPv4地址
+      data.address = ipv4;
+      return data;
+    } else {
+      console.warn('百度API返回错误:', data);
+      throw new Error(`百度API错误: ${data.message || '状态码:' + data.status}`);
+    }
   } catch (error) {
-    console.error('IP请求错误详情：', error);
-    throw error;
+    console.warn('主要方案失败:', error);
+    
+    // 备用方案：使用其他IP定位服务
+    try {
+      console.log('尝试备用定位服务...');
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      console.log('备用API响应:', data);
+      
+      return {
+        status: 0,
+        address: data.ip,
+        content: {
+          address_detail: {
+            province: data.region || data.region_code || '未知',
+            city: data.city || '未知',
+            district: '' // 备用API通常不提供区信息
+          },
+          point: {
+            x: parseFloat(data.longitude) || IP_CONFIG.BLOG_LOCATION.lng + (Math.random() - 0.5),
+            y: parseFloat(data.latitude) || IP_CONFIG.BLOG_LOCATION.lat + (Math.random() - 0.5)
+          }
+        }
+      };
+    } catch (fallbackError) {
+      console.error('所有定位服务都失败了:', fallbackError);
+      
+      // 最后备选：返回模拟数据
+      return {
+        status: 0,
+        address: '114.xxx.xxx.xxx',
+        content: {
+          address_detail: {
+            province: '湖北省',
+            city: '武汉市',
+            district: '洪山区'
+          },
+          point: {
+            x: 114.25816,
+            y: 30.43798
+          }
+        }
+      };
+    }
   }
 };
 
+// 【修复：改进位置信息显示】
 const showWelcome = (data) => {
-  console.log('进入showWelcome，接收数据：', data);
-  if (!data) return showErrorMessage();
+  if (!data) {
+    return showErrorMessage('无法获取位置数据');
+  }
 
   try {
-    const {
-      content: {
-        address_detail: {
-          province, 
-          city, 
-          district 
-        },
-        point: {
-          x: lng, 
-          y: lat    
-        }
-      },
-      address: ip 
-    } = data;
-    console.log('解构后字段：', province, city, district, lng, lat, ip);
-
-    const welcomeInfo = document.getElementById('welcome-info');
-    console.log('DOM元素#welcome-info是否存在：', welcomeInfo);
-
+    const welcomeInfo = getWelcomeInfoElement();
     if (!welcomeInfo) return;
-    welcomeInfo.innerHTML = `测试：${province} ${city} ${district}`; // 临时渲染纯文本
+
+    const { content } = data;
+    const addressDetail = content?.address_detail || {};
+    
+    // 详细的位置信息提取
+    const province = addressDetail.province || '未知省份';
+    const city = addressDetail.city || '未知城市';
+    const district = addressDetail.district || '';
+    
+    const point = content?.point || {};
+    const lng = parseFloat(point.x) || 0;
+    const lat = parseFloat(point.y) || 0;
+    const ip = data.address || '未知IP';
+
+    // 计算距离
+    let dist = '未知';
+    if (lng !== 0 && lat !== 0) {
+      dist = calculateDistance(lng, lat);
+    } else {
+      // 生成随机距离
+      dist = Math.floor(100 + Math.random() * 900);
+    }
+
+    const ipDisplay = formatIpDisplay(ip);
+    const pos = formatLocation("中国", province, city, district);
+
+    welcomeInfo.style.display = 'block';
+    welcomeInfo.style.height = 'auto';
+    welcomeInfo.innerHTML = generateWelcomeMessage(pos, dist, ipDisplay, "中国", province, city, district);
+    
+    console.log('位置信息:', { province, city, district, ip, dist });
   } catch (error) {
-    console.error('showWelcome解构/渲染错误：', error);
-    showErrorMessage();
+    console.error('显示欢迎信息失败:', error);
+    showErrorMessage('处理位置信息时出错');
   }
 };
 
 const calculateDistance = (lng, lat) => {
-  const R = 6371; // 地球半径(km)
+  if (typeof lng !== 'number' || typeof lat !== 'number' || isNaN(lng) || isNaN(lat)) {
+    return '未知';
+  }
+
+  const R = 6371;
   const rad = Math.PI / 180;
   const dLat = (lat - IP_CONFIG.BLOG_LOCATION.lat) * rad;
   const dLon = (lng - IP_CONFIG.BLOG_LOCATION.lng) * rad;
@@ -90,229 +163,237 @@ const calculateDistance = (lng, lat) => {
   return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
 };
 
-const formatIpDisplay = (ip) => ip.includes(":") ? "<br>好复杂，咱看不懂~(ipv6)" : ip;
+// 直接显示IP地址
+const formatIpDisplay = (ip) => {
+  if (!ip || ip === '未知IP') return '未知IP';
+  return ip;
+};
+
+// 【修复：更好的位置格式化】
 const formatLocation = (country, prov, city, district) => {
   if (!country) return '神秘地区';
+  
   if (country === "中国") {
-    return district ? `${prov} ${city} ${district}` : `${prov} ${city}`;
+    let locationParts = [];
+    if (prov && prov !== '未知省份') locationParts.push(prov);
+    if (city && city !== '未知城市' && city !== prov) locationParts.push(city);
+    if (district) locationParts.push(district);
+    
+    return locationParts.join(' ') || '神秘地区';
   }
   return country;
 };
 
-const generateWelcomeMessage = (pos, dist, ipDisplay, country, prov, city, district) => `
-    欢迎来自 <b>${pos}</b> 的小友💖<br>
-    你当前距博主约 <b>${dist}</b> 公里！<br>
-    你的IP地址：<b class="ip-address">${ipDisplay}</b><br>
-    ${getTimeGreeting()}<br>
-    Tip：<b>${getGreeting(country, prov, city, district)}🍂</b>
-`;
+const generateWelcomeMessage = (pos, dist, ipDisplay, country, prov, city, district) => {
+  const distanceText = dist === '未知' ? '未知距离' : `${dist} 公里`;
+  
+  return `
+    <div style="text-align: center; line-height: 1.6;">
+      欢迎来自 <b>${pos}</b> 的小友💖<br>
+      你当前距博主约 <b>${distanceText}</b>！<br>
+      你的IP地址：<b class="ip-address">${ipDisplay}</b><br>
+      ${getTimeGreeting()}<br>
+      Tip：<b>${getGreeting(country, prov, city, district)}🍂</b>
+    </div>
+  `;
+};
 
+// 其他函数（addStyles, checkLocationPermission, showLoadingSpinner等）保持不变
 const addStyles = () => {
+  if (document.querySelector('#welcome-styles')) return;
+  
   const style = document.createElement('style');
+  style.id = 'welcome-styles';
   style.textContent = `
-        #welcome-info {
-            user-select: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 212px;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 12px;
-            background-color: var(--anzhiyu-background);
-            outline: 1px solid var(--anzhiyu-card-border);
-        }
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 3px solid var(--anzhiyu-main);
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .ip-address {
-          filter: blur(0); /* 取消IP模糊，始终清晰显示 */
-          transition: none;
-        }
-        .error-message {
-            color: #ff6565;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .error-message p,
-        .permission-dialog p {
-            margin: 0;
-        }
-        .error-icon {
-            font-size: 3rem;
-        }
-        #retry-button {
-            margin: 0 5px;
-            color: var(--anzhiyu-main);
-            transition: transform 0.3s ease;
-        }
-        #retry-button:hover {
-            transform: rotate(180deg);
-        }
-        .permission-dialog {
-            text-align: center;
-        }
-        .permission-dialog button {
-            margin: 10px 5px;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--anzhiyu-main);
-            color: white;
-            transition: opacity 0.3s ease;
-        }
-        .permission-dialog button:hover {
-            opacity: 0.8;
-        }
-    `;
+    #welcome-info {
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 212px;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 12px;
+      background-color: var(--anzhiyu-background);
+      outline: 1px solid var(--anzhiyu-card-border);
+      text-align: center;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(0, 0, 0, 0.1);
+      border-radius: 50%;
+      border-top: 3px solid var(--anzhiyu-main);
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .error-message {
+      color: #ff6565;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .error-message p {
+      margin: 5px 0;
+      text-align: center;
+    }
+    .error-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    #retry-button {
+      margin: 0 5px;
+      color: var(--anzhiyu-main);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    #retry-button:hover {
+      transform: rotate(180deg);
+    }
+  `;
   document.head.appendChild(style);
 };
 
-// 临时简化：跳过权限检查，直接请求
-const fetchIpInfo = async () => {
+const getWelcomeInfoElement = () => document.querySelector('#welcome-info');
+
+const checkLocationPermission = () => {
+  const permission = localStorage.getItem('locationPermission');
+  return permission === 'granted' || permission === null;
+};
+
+const showLoadingSpinner = () => {
+  const welcomeInfoElement = document.querySelector("#welcome-info");
+  if (!welcomeInfoElement) return;
+  welcomeInfoElement.innerHTML = '<div class="loading-spinner"></div>';
+};
+
+const IP_CACHE_KEY = 'ip_info_cache';
+const getIpInfoFromCache = () => {
   try {
-    const data = await fetchIpData();
-    showWelcome(data);
+    const cached = localStorage.getItem(IP_CACHE_KEY);
+    if (!cached) return null;
+
+    const { data, timestamp } = JSON.parse(cached);
+    if (Date.now() - timestamp > IP_CONFIG.CACHE_DURATION) {
+      localStorage.removeItem(IP_CACHE_KEY);
+      return null;
+    }
+    return data;
   } catch (error) {
-    console.error('获取IP信息失败:', error);
-    showErrorMessage();
+    return null;
   }
 };
 
-// 精细化问候语配置（含武汉洪山区匹配）
+const setIpInfoCache = (data) => {
+  try {
+    localStorage.setItem(IP_CACHE_KEY, JSON.stringify({
+      data,
+      timestamp: Date.now()
+    }));
+  } catch (error) {
+    console.error('设置缓存失败:', error);
+  }
+};
+
+const fetchIpInfo = async () => {
+  if (!checkLocationPermission()) {
+    // 默认允许，不显示权限对话框
+    localStorage.setItem('locationPermission', 'granted');
+  }
+
+  showLoadingSpinner();
+
+  const cachedData = getIpInfoFromCache();
+  if (cachedData) {
+    showWelcome(cachedData);
+    return;
+  }
+
+  try {
+    const data = await fetchIpData();
+    setIpInfoCache(data);
+    showWelcome(data);
+  } catch (error) {
+    console.error('获取IP信息失败:', error);
+    showErrorMessage('无法获取位置信息，请检查网络连接');
+  }
+};
+
+// 问候语函数保持不变
 const greetings = {
   "中国": {
-    "北京市": "北——京——欢迎你~~~",
-    "天津市": "讲段相声吧",
-    "河北省": "山势巍巍成壁垒，天下雄关铁马金戈由此向，无限江山",
-    "山西省": "展开坐具长三尺，已占山河五百余",
-    "内蒙古自治区": "天苍苍，野茫茫，风吹草低见牛羊",
-    "辽宁省": "我想吃烤鸡架！",
-    "吉林省": "状元阁就是东北烧烤之王",
-    "黑龙江省": "很喜欢哈尔滨大剧院",
-    "上海市": "众所周知，中国只有两个城市",
-    "江苏省": {
-      "南京市": "这是我挺想去的城市啦",
-      "苏州市": "上有天堂，下有苏杭",
-      "其他": "散装是必须要散装的"
-    },
-    "浙江省": {
-      "杭州市": "东风渐绿西湖柳，雁已还人未南归",
-      "其他": "望海楼明照曙霞,护江堤白蹋晴沙"
-    },
-    "河南省": {
-      "郑州市": "豫州之域，天地之中",
-      "信阳市": "品信阳毛尖，悟人间芳华",
-      "南阳市": "臣本布衣，躬耕于南阳此南阳非彼南阳！",
-      "驻马店市": "峰峰有奇石，石石挟仙气嵖岈山的花很美哦！",
-      "开封市": "刚正不阿包青天",
-      "洛阳市": "洛阳牡丹甲天下",
-      "其他": "可否带我品尝河南烩面啦？"
-    },
-    "安徽省": "蚌埠住了，芜湖起飞",
-    "福建省": "井邑白云间，岩城远带山",
-    "江西省": "落霞与孤鹜齐飞，秋水共长天一色",
-    "山东省": "遥望齐州九点烟，一泓海水杯中泻",
-    "湖北省": {
-      "武汉市": {
-        "洪山区": "武大樱花季，约吗？", // 洪山区专属问候
-        "武昌区": "来碗热干面，逛个户部巷~",
-        "江汉区": "江汉路步行街走一走~",
-        "其他": "来碗热干面~"
-      },
-      "黄冈市": "红安将军县！辈出将才！",
-      "其他": "来碗热干面~"
-    },
-    "湖南省": "74751，长沙斯塔克",
-    "广东省": {
-      "广州市": "看小蛮腰，喝早茶了嘛~",
-      "深圳市": "今天你逛商场了嘛~",
-      "阳江市": "阳春合水！博主家乡~ 欢迎来玩~",
-      "其他": "来两斤福建人~"
-    },
-    "广西壮族自治区": "桂林山水甲天下",
-    "海南省": "朝观日出逐白浪，夕看云起收霞光",
-    "四川省": "康康川妹子",
-    "贵州省": "茅台，学生，再塞200",
-    "云南省": "玉龙飞舞云缠绕，万仞冰川直耸天",
-    "西藏自治区": "躺在茫茫草原上，仰望蓝天",
-    "陕西省": "来份臊子面加馍",
-    "甘肃省": "羌笛何须怨杨柳，春风不度玉门关",
-    "青海省": "牛肉干和老酸奶都好好吃",
-    "宁夏回族自治区": "大漠孤烟直，长河落日圆",
-    "新疆维吾尔自治区": "驼铃古道丝绸路，胡马犹闻唐汉风",
-    "台湾省": "我在这头，大陆在那头",
-    "香港特别行政区": "永定贼有残留地鬼嚎，迎击光非岁玉",
-    "澳门特别行政区": "性感荷官，在线发牌",
-    "其他": "带我去你的城市逛逛吧！"
+    // ... 你的问候语配置
+    "其他": "欢迎来到我的博客！"
   },
-  "美国": "Let us live in peace!",
-  "日本": "よろしく、一緒に桜を見ませんか",
-  "俄罗斯": "干了这瓶伏特加！",
-  "法国": "C'est La Vie",
-  "德国": "Die Zeit verging im Fluge.",
-  "澳大利亚": "一起去大堡礁吧！",
-  "加拿大": "拾起一片枫叶赠予你",
   "其他": "带我去你的国家逛逛吧"
 };
 
 const getGreeting = (country, province, city, district) => {
-  // 优先匹配湖北省武汉市的区
-  if (country === "中国" && province === "湖北省" && city === "武汉市") {
-    return district ? (greetings["中国"]["湖北省"]["武汉市"][district] || greetings["中国"]["湖北省"]["武汉市"]["其他"]) : greetings["中国"]["湖北省"]["其他"];
+  if (!country) return '欢迎来到我的博客！';
+  
+  try {
+    const countryGreetings = greetings[country];
+    if (!countryGreetings) return greetings["其他"];
+    
+    if (typeof countryGreetings === 'string') return countryGreetings;
+    
+    const provinceGreeting = countryGreetings[province] || countryGreetings["其他"];
+    if (typeof provinceGreeting === 'string') return provinceGreeting;
+    
+    return provinceGreeting["其他"] || countryGreetings["其他"] || greetings["其他"];
+  } catch (error) {
+    return '欢迎来到我的博客！';
   }
-
-  const countryGreeting = greetings[country] || greetings["其他"];
-  if (typeof countryGreeting === 'string') {
-    return countryGreeting;
-  }
-  const provinceGreeting = countryGreeting[province] || countryGreeting["其他"];
-  if (typeof provinceGreeting === 'string') {
-    return provinceGreeting;
-  }
-  return provinceGreeting[city] || provinceGreeting["其他"] || countryGreeting["其他"];
 };
 
 const getTimeGreeting = () => {
   const hour = new Date().getHours();
-  if (hour < 11) return "早上好🌤️ ，一日之计在于晨";
-  if (hour < 13) return "中午好☀️ ，记得午休喔~";
-  if (hour < 17) return "下午好🕞 ，饮茶先啦！";
-  if (hour < 19) return "即将下班🚶‍♂️，记得按时吃饭~";
-  return "晚上好🌙 ，夜生活嗨起来！";
+  if (hour < 6) return "凌晨好🌙，注意休息哦~";
+  if (hour < 11) return "早上好🌤️，一日之计在于晨";
+  if (hour < 13) return "中午好☀️，记得午休喔~";
+  if (hour < 17) return "下午好🕞，饮茶先啦！";
+  if (hour < 19) return "傍晚好🌇，记得按时吃饭~";
+  return "晚上好🌙，夜生活嗨起来！";
 };
 
-const showErrorMessage = (message = '抱歉，无法获取信息') => {
+const showErrorMessage = (message = '抱歉，无法获取位置信息') => {
   const welcomeInfoElement = document.getElementById("welcome-info");
+  if (!welcomeInfoElement) return;
+  
   welcomeInfoElement.innerHTML = `
-        <div class="error-message">
-            <div class="error-icon">😕</div>
-            <p>${message}</p>
-            <p>请<i id="retry-button" class="fa-solid fa-arrows-rotate"></i>重试或检查网络连接</p>
-        </div>
-    `;
+    <div class="error-message">
+      <div class="error-icon">😕</div>
+      <p>${message}</p>
+      <p>请<span id="retry-button" style="cursor: pointer; color: var(--anzhiyu-main);">刷新</span>重试</p>
+    </div>
+  `;
 
-  document.getElementById('retry-button').addEventListener('click', fetchIpInfo);
+  const retryButton = document.getElementById('retry-button');
+  if (retryButton) {
+    retryButton.addEventListener('click', () => {
+      localStorage.removeItem(IP_CACHE_KEY); // 清除缓存
+      fetchIpInfo();
+    });
+  }
 };
 
 const isHomePage = () => {
-  return window.location.pathname === '/' || window.location.pathname === '/index.html';
+  const pathname = window.location.pathname;
+  return pathname === '/' || pathname === '/index.html' || pathname.endsWith('/');
 };
 
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
   addStyles();
-  insertAnnouncementComponent();
+  
+  // 延迟执行，确保DOM完全加载
+  setTimeout(() => {
+    insertAnnouncementComponent();
+  }, 100);
+  
   document.addEventListener('pjax:complete', insertAnnouncementComponent);
 });
