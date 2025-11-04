@@ -143,7 +143,45 @@ function showWelcome() {
                     posdesc = "遥望齐州九点烟，一泓海水杯中泻。";
                     break;
                 case "湖北省":
-                    posdesc = "请我吃碗热干面！";
+                    switch (ipLoacation.result.ad_info.city) {
+                        case "武汉市":
+                            switch (ipLoacation.result.ad_info.district) {  // 细化到武汉各区
+                                case "洪山区":
+                                    posdesc = "珞珈山下书香浓，东湖岸边风光好~";  // 洪山区专属（武汉大学所在地）
+                                    break;
+                                case "武昌区":
+                                    posdesc = "来碗热干面，逛个户部巷~";  // 武昌区地标
+                                    break;
+                                case "江汉区":
+                                    posdesc = "江汉路步行街走一走~";  // 江汉区特色
+                                    break;
+                                case "江岸区":
+                                    posdesc = "长江二桥下的夜景真美~";  // 江岸区地标
+                                    break;
+                                case "汉阳区":
+                                    posdesc = "龟山电视塔下，看长江东流~";  // 汉阳区特色
+                                    break;
+                                default:
+                                    posdesc = "来碗热干面~";  // 武汉其他区通用
+                                    break;
+                            }
+                            break;
+                        case "宜昌市":
+                            posdesc = "三峡大坝的壮阔，一定要亲眼看看~";  // 宜昌地标
+                            break;
+                        case "襄阳市":
+                            posdesc = "襄阳古城墙，见证千年风云~";  // 襄阳特色
+                            break;
+                        case "黄冈市":
+                            posdesc = "红安将军县，辈出将才！";  // 黄冈红安县特色
+                            break;
+                        case "十堰市":
+                            posdesc = "武当山的日出，值得早起~";  // 十堰地标
+                            break;
+                        default:
+                            posdesc = "湖北的藕汤，暖心又暖胃~";  // 湖北省其他城市通用
+                            break;
+                    }
                     break;
                 case "湖南省":
                     posdesc = "74751，长沙斯塔克。";
@@ -206,18 +244,24 @@ function showWelcome() {
     //根据本地时间切换欢迎语
     let timeChange;
     let date = new Date();
-    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>上午好</span>，一日之计在于晨！";
-    else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>中午好</span>，该摸鱼吃午饭了。";
-    else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好</span>，懒懒地睡个午觉吧！";
+    if (date.getHours() >= 5 && date.getHours() < 11) timeChange = "<span>上午好🌤️</span>，一日之计在于晨！";
+    else if (date.getHours() >= 11 && date.getHours() < 13) timeChange = "<span>中午好☀️</span>，该摸鱼吃午饭了。";
+    else if (date.getHours() >= 13 && date.getHours() < 15) timeChange = "<span>下午好🕞</span>，懒懒地睡个午觉吧！";
     else if (date.getHours() >= 15 && date.getHours() < 16) timeChange = "<span>三点几啦</span>，一起饮茶呀！";
-    else if (date.getHours() >= 16 && date.getHours() < 19) timeChange = "<span>夕阳无限好！</span>";
+    else if (date.getHours() >= 16 && date.getHours() < 19) timeChange = "<span>夕阳无限好🌇！</span>";
     else if (date.getHours() >= 19 && date.getHours() < 24) timeChange = "<span>晚上好</span>，夜生活嗨起来！";
-    else timeChange = "夜深了，早点休息，少熬夜。";
+    else timeChange = "夜深了🌙，早点休息，少熬夜。";
 
     try {
         //自定义文本和需要放的位置
-        document.getElementById("welcome-info").innerHTML =
-            `<b><center>🎉 欢迎信息 🎉</center>&emsp;&emsp;欢迎来自 <span style="color:var(--theme-color)">${pos}</span> 的小伙伴，${timeChange}您现在距离站长约 <span style="color:var(--theme-color)">${dist}</span> 公里，您当前的IP地址为（可能为ipv4/6格式）： <span style="color:var(--theme-color)">${ip}</span>， ${posdesc}</b>`;
+        document.getElementById("welcome-info").innerHTML = `<div style="text-align: center; line-height: 1.6; font-weight: 400;">
+  欢迎来自 <b style="color: var(--theme-color);">${pos}</b> 的小友💖<br>
+  你当前距博主约 <b style="color: var(--theme-color);">${dist}</b> 公里！<br>
+  <div style="text-align: center;">你的IP地址：</div>
+  <b class="ip-address" style="color: var(--theme-color); font-weight: 700;">${ip}</b><br>
+  ${timeChange}<br>
+  Tip：<b style="color: var(--theme-color);">${posdesc}🍂</b>
+</div>`;
     } catch (err) {
         // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
     }

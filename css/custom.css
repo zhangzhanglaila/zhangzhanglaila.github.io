@@ -1,9 +1,20 @@
-/* 欢迎信息 */
+/* 在source/css/custom.css中添加 */
 #welcome-info {
-  background: linear-gradient(45deg, #b9f4f3, #e3fbf9);
-  border-radius: 18px;
-  padding: 8px;
+  background-color: #f8f9fa !important; 
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  font-family: "Noto Sans SC", sans-serif; /* 可选：引入清晰的无衬线字体 */
 }
-[data-theme="dark"] #welcome-info {
-  background: #212121;
+
+#welcome-info b, #welcome-info strong {
+  color: #0d6efd !important;
+  font-weight: 600 !important; /* 加粗字体，与右侧一致 */
 }
+
+#welcome-info .ip-address {
+  color: #0d6efd !important;
+  font-family: monospace;
+  font-weight: 700 !important; /* IP地址也加粗 */
+}
+
