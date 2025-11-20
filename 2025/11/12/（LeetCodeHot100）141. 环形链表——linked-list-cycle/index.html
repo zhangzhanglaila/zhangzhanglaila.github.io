@@ -1,555 +1,420 @@
-blockquote {
-  border: var(--style-border-always);
-  background-color: var(--anzhiyu-secondbg);
-  color: var(--anzhiyu-secondtext);
-  border-radius: 8px;
-  margin: 1rem 0;
-  padding: 0.5rem 0.8rem;
-}
-#article-container {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-#article-container h1 .post-content,
-#article-container h2 .post-content,
-#article-container h3 .post-content,
-#article-container h4 .post-content,
-#article-container h5 .post-content,
-#article-container h6 .post-content {
-  line-height: 1.6;
-  border-top: 1px dashed var(--anzhiyu-theme-op);
-  padding-top: 1.5rem;
-  padding-left: 0;
-}
-#article-container a {
-  color: $theme-link-color;
-}
-#article-container a:hover {
-  text-decoration: underline;
-}
-#article-container img {
-  display: block;
-  margin: 0 auto 20px;
-  max-width: 100%;
-  transition: 0.3s;
-  border-radius: 8px;
-}
-#article-container p {
-  margin: 0 0 16px;
-}
-#article-container iframe {
-  margin: 0 0 20px;
-  border-radius: 12px;
-}
-#article-container kbd {
-  margin: 0 3px;
-  padding: 3px 5px;
-  border: 1px solid #b4b4b4;
-  border-radius: 3px;
-  background-color: #f8f8f8;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.25), 0 2px 1px 0 rgba(255,255,255,0.6) inset;
-  color: #34495e;
-  white-space: nowrap;
-  font-weight: 600;
-  font-size: 0.9em;
-  font-family: Monaco, 'Ubuntu Mono', monospace;
-  line-height: 1em;
-}
-#article-container h1 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 2rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h1 .headerlink::before {
-  font-size: 2rem;
-}
-#article-container > :first-child:is(h2) {
-  border-top: none;
-  padding-top: 0;
-  margin-top: 0;
-}
-#article-container h2 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 1.8rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h2 .headerlink::before {
-  font-size: 1.8rem;
-}
-#article-container h3 .headerlink,
-#article-container h4 .headerlink,
-#article-container h5 .headerlink,
-#article-container h6 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 1.3rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h3 .headerlink::before,
-#article-container h4 .headerlink::before,
-#article-container h5 .headerlink::before,
-#article-container h6 .headerlink::before {
-  font-size: 1.3rem;
-}
-#article-container a.headerlink::before {
-  content: '\f0c1';
-  float: right;
-  color: var(--headline-presudo);
-  transition: all 0.3s;
-}
-#article-container a.headerlink:hover:after {
-  color: var(--pseudo-hover);
-}
-#article-container a.headerlink h1:hover a.headerlink:after,
-#article-container a.headerlink h2:hover a.headerlink:after,
-#article-container a.headerlink h3:hover a.headerlink:after,
-#article-container a.headerlink h4:hover a.headerlink:after,
-#article-container a.headerlink h5:hover a.headerlink:after,
-#article-container a.headerlink h6:hover a.headerlink:after {
-  opacity: 1;
-}
-#article-container ol ol,
-#article-container ul ol,
-#article-container ol ul,
-#article-container ul ul {
-  padding-left: 20px;
-}
-#article-container ol li,
-#article-container ul li {
-  margin: 4px 0;
-}
-#article-container ol p,
-#article-container ul p {
-  margin: 0 0 8px;
-}
-#article-container.post-content h1:before {
-  margin-left: -26px;
-  font-size: 20px;
-}
-#article-container.post-content h1:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h2:before {
-  margin-left: -24px;
-  font-size: 18px;
-}
-#article-container.post-content h2:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h3:before {
-  margin-left: -22px;
-  font-size: 16px;
-}
-#article-container.post-content h3:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h4:before {
-  margin-left: -20px;
-  font-size: 14px;
-}
-#article-container.post-content h4:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h5:before {
-  margin-left: -18px;
-  font-size: 12px;
-}
-#article-container.post-content h5:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h6:before {
-  margin-left: -18px;
-  font-size: 12px;
-}
-#article-container.post-content h6:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content ol p,
-#article-container.post-content ul p {
-  margin: 0 0 8px;
-}
-#article-container.post-content li::marker {
-  color: $light-blue;
-  font-weight: 600;
-  font-size: 1.05em;
-}
-#article-container.post-content li:hover::marker {
-  color: var(--pseudo-hover);
-}
-#article-container > :last-child {
-  margin-bottom: 0 !important;
-}
-#post .post_share {
-  margin: 8px 0 0;
-  width: fit-content;
-  min-width: 205px;
-}
-#post .tag_share {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-#post .tag_share .post-meta__box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-#post .tag_share .post-meta__box__tag-list,
-#post .tag_share .post-meta__box__category-list {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-}
-#post .tag_share .post-meta__box__tags,
-#post .tag_share .post-meta__box__categoryes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 12px;
-  width: fit-content;
-  border-radius: 8px;
-  font-size: 0.85em;
-  transition: all 0.2s ease-in-out;
-maxWidth768()
-}
-#post .tag_share .post-meta__box__tags {
-  margin: 0px 8px 0px 0;
-}
-#post .tag_share .post-meta__box__categoryes {
-  margin: 0px 8px 4px 0;
-}
-#post .tag_share .post-meta__box__categoryes:hover {
-  background: $light-blue;
-  color: var(--white);
-}
-#post .tag_share .post-meta .social-share {
-  font-size: 0.85em;
-}
-#post .tag_share .post-meta .social-share .social-share-icon {
-  margin: 0 4px;
-  width: 1.85em;
-  height: 1.85em;
-  font-size: 1.2em;
-  line-height: 1.85em;
-}
-#post .post-copyright {
-  background: var(--anzhiyu-secondbg);
-  padding: 1rem 1.3rem;
-  border: var(--style-border);
-  border-width: 1px;
-  transition: 0.3s;
-  position: relative;
-  margin: 80px 0 30px;
-  border-radius: 12px;
-}
-#post .post-copyright .copyright-cc-box {
-  position: absolute;
-  right: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  pointer-events: none;
-}
-#post .post-copyright__author_box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 1.5rem;
-}
-#post .post-copyright__author_box .post-copyright__author_img {
-  width: 66px;
-  height: 66px;
-  margin: auto;
-  border-radius: 66px;
-  overflow: hidden;
-  position: absolute;
-  left: calc(50% - 33px);
-  top: -33px;
-  border: var(--style-border-always);
-  box-shadow: var(--anzhiyu-shadow-main);
-}
-#post .post-copyright__author_box .post-copyright__author_img:hover img.post-copyright__author_img_back {
-  z-index: 21;
-  transform: translateY(0px);
-}
-#post .post-copyright__author_box .post-copyright__author_img img.post-copyright__author_img_front {
-  z-index: 20;
-  transition: 0.3s;
-}
-#post .post-copyright__author_box .post-copyright__author_img img.post-copyright__author_img_back {
-  border-radius: 66px;
-  z-index: 10;
-  transition: 0.3s;
-}
-#post .post-copyright__author_box .post-copyright__author_img img {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-#post .post-copyright__author_box .post-copyright__author_name {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--anzhiyu-fontcolor);
-  line-height: 1;
-}
-#post .post-copyright__author_box .post-copyright__author_desc {
-  text-align: center;
-  font-size: 14px;
-  color: var(--anzhiyu-secondtext);
-  margin-top: 4px;
-}
-#post .post-copyright__post__info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.2rem;
-}
-#post .post-copyright__original,
-#post .post-copyright__reprint {
-  background: var(--anzhiyu-main);
-  color: var(--anzhiyu-wihite-font);
-  padding: 0.2rem 1rem;
-  font-size: 0.8rem;
-  border-radius: 8px;
-  margin-right: 0.5rem;
-  font-weight: bold;
-  line-height: 1.5;
-  white-space: nowrap;
-  user-select: none;
-}
-#post .post-copyright .anzhiyufont.anzhiyu-icon-copyright {
-  position: absolute;
-  font-size: 1.3em;
-  top: -71px;
-  right: -20px;
-  font-size: 8.3em;
-  z-index: -1;
-  color: var(--anzhiyu-main);
-}
-@media screen and (min-width: 1365px) {
-  #post .post-copyright .anzhiyufont.anzhiyu-icon-copyright {
-    z-index: 0;
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>（LeetCodeHot100）141. 环形链表——linked-list-cycle | zhangzhang-blog</title><meta name="keywords" content="算法,链表,双指针,快慢指针,Hash,Java,LeetCode"><meta name="author" content="zhangzhang"><meta name="copyright" content="zhangzhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="（LeetCodeHot100）141. 环形链表——linked-list-cycle"><meta name="application-name" content="（LeetCodeHot100）141. 环形链表——linked-list-cycle"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="（LeetCodeHot100）141. 环形链表——linked-list-cycle"><meta property="og:url" content="http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/index.html"><meta property="og:site_name" content="zhangzhang-blog"><meta property="og:description" content="141. 环形链表——linked-list-cycle给你一个链表的头节点 head ，判断链表中是否有环。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9d629007-9129-5bfa-8c23-bba66bddca35"><meta property="article:author" content="zhangzhang"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9d629007-9129-5bfa-8c23-bba66bddca35"><meta name="description" content="141. 环形链表——linked-list-cycle给你一个链表的头节点 head ，判断链表中是否有环。 如果链表中有某个节点，可以通过连续跟踪 next 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: zhangzhang","link":"链接: ","source":"来源: zhangzhang-blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'zhangzhang-blog',
+  title: '（LeetCodeHot100）141. 环形链表——linked-list-cycle',
+  postAI: '',
+  pageFillDescription: '141. 环形链表——linked-list-cycle, 我的正确答案, 方法一：哈希表, 方法二：快慢指针环形链表给你一个链表的头节点判断链表中是否有环如果链表中有某个节点可以通过连续跟踪指针再次到达则链表中存在环为了表示给定链表中的环评测系统内部使用整数来表示链表尾连接到链表中的位置索引从开始注意不作为参数进行传递仅仅是为了标识链表的实际情况如果链表中存在环则返回否则返回示例输入输出解释链表中有一个环其尾部连接到第二个节点示例输入输出解释链表中有一个环其尾部连接到第一个节点示例输入输出解释链表中没有环提示链表中节点的数目范围是为或者链表中的一个有效索引我的正确答案利用存储已遍历节点的引用通过判断节点是否重复出现来检测链表是否有环但是执行用时分布击败说明这个方法效率低的操作和看似是时间复杂度实则存在隐藏开销哈希值计算每次添加判断节点时都需要计算对象的哈希值中默认基于对象内存地址计算哈希冲突处理如果哈希值冲突会通过链表或红黑树处理此时操作时间会退化接近内存分配需要动态扩容当元素数量达到负载因子时扩容过程中会重新计算所有元素的哈希值并迁移产生额外耗时对象存储存储节点引用需要占用内存每个引用字节对于大规模链表如个节点内存操作本身也会影响效率同样官方题解法一跟我是一样的方法一哈希表思路及算法最容易想到的方法是遍历所有节点每次遍历到一个节点时判断该节点此前是否被访问过具体地我们可以使用哈希表来存储所有已经访问过的节点每次我们到达一个节点如果该节点已经存在于哈希表中则说明该链表是环形链表否则就将该节点加入哈希表中重复这一过程直到我们遍历完整个链表即可代码复杂度分析时间复杂度其中是链表中的节点数最坏情况下我们需要遍历每个节点一次空间复杂度其中是链表中的节点数主要为哈希表的开销最坏情况下我们需要将每个节点插入到哈希表中一次方法二快慢指针思路及算法本方法需要读者对判圈算法又称龟兔赛跑算法有所了解假想乌龟和兔子在链表上移动兔子跑得快乌龟跑得慢当乌龟和兔子从链表上的同一个节点开始移动时如果该链表中没有环那么兔子将一直处于乌龟的前方如果该链表中有环那么兔子会先于乌龟进入环并且一直在环内移动等到乌龟进入环时由于兔子的速度快它一定会在某个时刻与乌龟相遇即套了乌龟若干圈我们可以根据上述思路来解决本题具体地我们定义两个指针一快一慢慢指针每次只移动一步而快指针每次移动两步初始时慢指针在位置而快指针在位置这样一来如果在移动的过程中快指针反过来追上慢指针就说明该链表为环形链表否则快指针将到达链表尾部该链表不为环形链表细节为什么我们要规定初始时慢指针在位置快指针在位置而不是两个指针都在位置即与乌龟和兔子中的叙述相同观察下面的代码我们使用的是循环循环条件先于循环体由于循环条件一定是判断快慢指针是否重合如果我们将两个指针初始都置于那么循环就不会执行因此我们可以假想一个在之前的虚拟节点慢指针从虚拟节点移动一步到达快指针从虚拟节点移动两步到达这样我们就可以使用循环了当然我们也可以使用循环此时我们就可以把快慢指针的初始值都置为代码复杂度分析时间复杂度其中是链表中的节点数当链表中不存在环时快指针将先于慢指针到达链表尾部链表中每个节点至多被访问两次当链表中存在环时每一轮移动后快慢指针的距离将减小一而初始距离为环的长度因此至多移动轮空间复杂度我们只使用了两个指针的额外空间',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-12 19:52:40',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339617.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
   }
 }
-#post .post-copyright-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 500;
-  max-width: 70%;
-}
-#post .post-copyright-title span {
-  cursor: pointer;
-}
-#post .post-copyright-title:hover {
-  color: var(--anzhiyu-fontcolor);
-}
-#post .post-copyright .post-copyright__notice {
-  font-size: 12px;
-}
-#post .post-copyright .post-copyright__notice .post-copyright-info {
-  padding-left: 0;
-  color: var(--anzhiyu-secondtext);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-align: center;
-maxWidth768()
-}
-#post .post-copyright .post-copyright__notice .post-copyright-info a:hover {
-  color: var(--anzhiyu-main);
-}
-#post .post-outdate-notice {
-  position: relative;
-  margin: 0 0 20px;
-  padding: 0.5em 1.2em;
-  border-radius: 3px;
-  background-color: $noticeOutdate-bg;
-  color: $noticeOutdate-color;
-  padding: 0.5em 1em 0.5em 2.6em;
-  border-left: 5px solid $noticeOutdate-border;
-}
-#post .post-outdate-notice:before {
-  position: absolute;
-  top: 50%;
-  left: 0.9em;
-  color: $noticeOutdate-border;
-  transform: translateY(-50%);
-}
-#post .ads-wrap {
-  margin: 40px 0;
-}
-#post #content-inner.layout #article-container h1,
-#post #content-inner.layout #article-container h2,
-#post #content-inner.layout #article-container h3,
-#post #content-inner.layout #article-container h4,
-#post #content-inner.layout #article-container h5,
-#post #content-inner.layout #article-container h6 {
-  padding-left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-}
-.post-ai-description {
-  background: var(--anzhiyu-secondbg);
-  border-radius: 12px;
-  padding: 12px 16px;
-  line-height: 1.3;
-  border: var(--style-border-always);
-  margin-bottom: 10px;
-}
-.ai-title {
-  display: flex;
-  color: var(--font-color);
-  border-radius: 8px;
-  align-items: center;
-  padding: 0 5px;
-}
-.ai-title i {
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 20px;
-  height: 20px;
-}
-.ai-title .anzhiyufont.anzhiyu-icon-circle-dot {
-  margin-left: auto;
-  margin-right: 4px;
-  font-size: 14px;
-  opacity: 0;
-}
-.ai-title .anzhiyufont.anzhiyu-icon-circle-dot:active {
-  transform: scale(0.97);
-}
-.ai-title .anzhiyufont.anzhiyu-icon-arrow-rotate-right {
-  font-size: 14px;
-  margin-left: 4px;
-  cursor: pointer;
-}
-.ai-title .ai-title-text {
-  font-weight: bold;
-  margin-left: 8px;
-}
-#ai-tag {
-  font-size: 12px;
-  background-color: var(--anzhiyu-lighttext);
-  color: rgba(255,255,255,0.9);
-  border-radius: 4px;
-  line-height: 1;
-  padding: 4px 5px;
-  cursor: pointer;
-}
-#ai-Toggle {
-  font-size: 12px;
-  background: var(--anzhiyu-lighttext);
-  color: var(--anzhiyu-card-bg);
-  padding: 4px;
-  border-radius: 4px;
-  margin-left: 6px;
-  transform: scale(0.8);
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
-}
-#ai-Toggle:hover {
-  background: var(--anzhiyu-fontcolor);
-  color: var(--anzhiyu-card-bg);
-}
-#go-tianli-blog {
-  display: none;
-}
-.ai-explanation {
-  margin-top: 12px;
-  padding: 8px 12px;
-  background: var(--anzhiyu-card-bg);
-  border-radius: 8px;
-  border: var(--style-border-always);
-  font-size: 15px;
-  line-height: 1.4;
-}
-.ai-cursor {
-  display: inline-block;
-  width: 7px;
-  background: #333;
-  height: 16px;
-  margin-bottom: -2px;
-  opacity: 0.95;
-  margin-left: 3px;
-  transition: all 0.3s;
-}
-[data-theme="dark"] .ai-cursor {
-  background: #fff;
-}
-.ai-btn-box {
-  font-size: 15.5px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.ai-btn-item {
-  padding: 5px 10px;
-  margin: 10px 16px 0px 5px;
-  width: fit-content;
-  line-height: 1;
-  background: var(--anzhiyu-main);
-  color: #fff;
-  border-radius: 6px;
-  user-select: none;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.ai-btn-item:hover {
-  background: var(--anzhiyu-theme);
-}
-.ai-recommend {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.ai-recommend .ai-recommend-item {
-  width: calc(50% - 20px);
-  margin: 10px;
-  background: var(--anzhiyu-secondbg);
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  animation: slide-in 0.6s 0.1s backwards;
-}
-.ai-recommend .ai-recommend-item span.index {
-  padding: 4px;
-}
-.ai-recommend .ai-recommend-item:hover {
-  color: var(--anzhiyu-white);
-  background: var(--anzhiyu-theme);
-}
-.ai-recommend .ai-recommend-item:hover a {
-  color: var(--anzhiyu-white);
-}
-maxWidth768()
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">zhangzhang-blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.05rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 1.05rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 1.05rem;">DFS<sup>5</sup></a><a href="/tags/DP/" style="font-size: 1.05rem;">DP<sup>3</sup></a><a href="/tags/Hash/" style="font-size: 1.05rem;">Hash<sup>9</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>25</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 1.05rem;">LeetCode<sup>25</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 1.05rem;">PTA<sup>92</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>25</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c++<sup>73</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>1</sup></a><a href="/tags/vim/" style="font-size: 1.05rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 1.05rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 1.05rem;">作业<sup>72</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 1.05rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">双指针<sup>15</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 1.05rem;">图<sup>6</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 1.05rem;">复习<sup>5</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">快慢指针<sup>5</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>95</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 1.05rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">树和二叉树<sup>12</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.05rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">笔记<sup>3</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>122</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 1.05rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 1.05rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.05rem;">贪心<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>33</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.05rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 1.05rem;">顺序表<sup>19</sup></a><a href="/tags/%E9%A9%BE%E7%85%A7/" style="font-size: 1.05rem;">驾照<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">62</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">74</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a><a class="article-meta__tags" href="/tags/%E9%93%BE%E8%A1%A8/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>链表</span></a><a class="article-meta__tags" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>双指针</span></a><a class="article-meta__tags" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>快慢指针</span></a><a class="article-meta__tags" href="/tags/Hash/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Hash</span></a><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/LeetCode/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LeetCode</span></a></span></div></div><h1 class="post-title" itemprop="name headline">（LeetCodeHot100）141. 环形链表——linked-list-cycle</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-11-12T11:40:00.000Z" title="发表于 2025-11-12 19:40:00">2025-11-12</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-12T11:52:40.955Z" title="更新于 2025-11-12 19:52:40">2025-11-12</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">1.6k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="（LeetCodeHot100）141. 环形链表——linked-list-cycle"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为武汉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>武汉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9d629007-9129-5bfa-8c23-bba66bddca35"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/"><header><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a><a href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url">算法</a><a href="/tags/%E9%93%BE%E8%A1%A8/" tabindex="-1" itemprop="url">链表</a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url">双指针</a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url">快慢指针</a><a href="/tags/Hash/" tabindex="-1" itemprop="url">Hash</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/LeetCode/" tabindex="-1" itemprop="url">LeetCode</a><h1 id="CrawlerTitle" itemprop="name headline">（LeetCodeHot100）141. 环形链表——linked-list-cycle</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhangzhang</span><time itemprop="dateCreated datePublished" datetime="2025-11-12T11:40:00.000Z" title="发表于 2025-11-12 19:40:00">2025-11-12</time><time itemprop="dateCreated datePublished" datetime="2025-11-12T11:52:40.955Z" title="更新于 2025-11-12 19:52:40">2025-11-12</time></header><h1 id="141-环形链表——linked-list-cycle"><a href="#141-环形链表——linked-list-cycle" class="headerlink" title="141. 环形链表——linked-list-cycle"></a>141. 环形链表——linked-list-cycle</h1><p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code> 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（索引从 0 开始）。<strong>注意：<code>pos</code> 不作为参数进行传递</strong> 。仅仅是为了标识链表的实际情况。</p>
+<p><em>如果链表中存在环</em> ，则返回 <code>true</code> 。 否则，返回 <code>false</code> 。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202511121950107.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [3,2,0,-4], pos = 1</span><br><span class="line">输出：true</span><br><span class="line">解释：链表中有一个环，其尾部连接到第二个节点。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202511121950815.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1,2], pos = 0</span><br><span class="line">输出：true</span><br><span class="line">解释：链表中有一个环，其尾部连接到第一个节点。</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 3：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202511121950509.png" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：head = [1], pos = -1</span><br><span class="line">输出：false</span><br><span class="line">解释：链表中没有环。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>链表中节点的数目范围是 <code>[0, 104]</code></li>
+<li><code>-105 &lt;= Node.val &lt;= 105</code></li>
+<li><code>pos</code> 为 <code>-1</code> 或者链表中的一个 <strong>有效索引</strong> 。</li>
+</ul>
+<hr>
+<h2 id="我的正确答案"><a href="#我的正确答案" class="headerlink" title="我的正确答案"></a>我的正确答案</h2><p>利用 <strong>HashSet 存储已遍历节点的引用</strong>，通过判断节点是否重复出现来检测链表是否有环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        Set&lt;ListNode&gt; set= <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (set.contains(head)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                set.add(head);</span><br><span class="line">                head = head.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>但是：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">执行用时分布</span><br><span class="line">6ms</span><br><span class="line">击败8.37%</span><br></pre></td></tr></table></figure>
+
+<p>说明这个方法效率低：<code>HashSet</code> 的操作（<code>add</code> 和 <code>contains</code>）看似是 O (1) 时间复杂度，实则存在隐藏开销：</p>
+<ol>
+<li><strong>哈希值计算</strong>：每次添加 &#x2F; 判断节点时，都需要计算 <code>ListNode</code> 对象的哈希值（Java 中默认基于对象内存地址计算）；</li>
+<li><strong>哈希冲突处理</strong>：如果哈希值冲突，<code>HashSet</code> 会通过链表或红黑树处理，此时操作时间会退化（接近 O (n)）；</li>
+<li><strong>内存分配</strong>：<code>HashSet</code> 需要动态扩容（当元素数量达到负载因子时），扩容过程中会重新计算所有元素的哈希值并迁移，产生额外耗时；</li>
+<li><strong>对象存储</strong>：存储节点引用需要占用内存（每个引用 4&#x2F;8 字节），对于大规模链表（如 10⁴ 个节点），内存操作本身也会影响效率。</li>
+</ol>
+<hr>
+<p>同样官方题解法一跟我是一样的：</p>
+<h2 id="方法一：哈希表"><a href="#方法一：哈希表" class="headerlink" title="方法一：哈希表"></a>方法一：哈希表</h2><p><strong>思路及算法</strong></p>
+<p>最容易想到的方法是遍历所有节点，每次遍历到一个节点时，判断该节点此前是否被访问过。</p>
+<p>具体地，我们可以使用哈希表来存储所有已经访问过的节点。每次我们到达一个节点，如果该节点已经存在于哈希表中，则说明该链表是环形链表，否则就将该节点加入哈希表中。重复这一过程，直到我们遍历完整个链表即可。</p>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        Set&lt;ListNode&gt; seen = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;ListNode&gt;();</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!seen.add(head)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            head = head.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<em>O</em>(<em>N</em>)，其中 <em>N</em> 是链表中的节点数。最坏情况下我们需要遍历每个节点一次。</li>
+<li>空间复杂度：<em>O</em>(<em>N</em>)，其中 <em>N</em> 是链表中的节点数。主要为哈希表的开销，最坏情况下我们需要将每个节点插入到哈希表中一次。</li>
+</ul>
+<h2 id="方法二：快慢指针"><a href="#方法二：快慢指针" class="headerlink" title="方法二：快慢指针"></a>方法二：快慢指针</h2><p><strong>思路及算法</strong></p>
+<p>本方法需要读者对「Floyd 判圈算法」（又称龟兔赛跑算法）有所了解。</p>
+<p>假想「乌龟」和「兔子」在链表上移动，「兔子」跑得快，「乌龟」跑得慢。当「乌龟」和「兔子」从链表上的同一个节点开始移动时，如果该链表中没有环，那么「兔子」将一直处于「乌龟」的前方；如果该链表中有环，那么「兔子」会先于「乌龟」进入环，并且一直在环内移动。等到「乌龟」进入环时，由于「兔子」的速度快，它一定会在某个时刻与乌龟相遇，即套了「乌龟」若干圈。</p>
+<p>我们可以根据上述思路来解决本题。具体地，我们定义两个指针，一快一慢。慢指针每次只移动一步，而快指针每次移动两步。初始时，慢指针在位置 <code>head</code>，而快指针在位置 <code>head.next</code>。这样一来，如果在移动的过程中，快指针反过来追上慢指针，就说明该链表为环形链表。否则快指针将到达链表尾部，该链表不为环形链表。</p>
+<p><strong>细节</strong></p>
+<p>为什么我们要规定初始时慢指针在位置 <code>head</code>，快指针在位置 <code>head.next</code>，而不是两个指针都在位置 <code>head</code>（即与「乌龟」和「兔子」中的叙述相同）？</p>
+<ul>
+<li>观察下面的代码，我们使用的是 <code>while</code> 循环，循环条件先于循环体。由于循环条件一定是判断快慢指针是否重合，如果我们将两个指针初始都置于 <code>head</code>，那么 <code>while</code> 循环就不会执行。因此，我们可以假想一个在 <code>head</code> 之前的虚拟节点，慢指针从虚拟节点移动一步到达 <code>head</code>，快指针从虚拟节点移动两步到达 <code>head.next</code>，这样我们就可以使用 <code>while</code> 循环了。</li>
+<li>当然，我们也可以使用 <code>do-while</code> 循环。此时，我们就可以把快慢指针的初始值都置为 <code>head</code>。</li>
+</ul>
+<p><strong>代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head.next;</span><br><span class="line">        <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">            <span class="keyword">if</span> (fast == <span class="literal">null</span> || fast.next == <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度：<em>O</em>(<em>N</em>)，其中 <em>N</em> 是链表中的节点数。<ul>
+<li>当链表中不存在环时，快指针将先于慢指针到达链表尾部，链表中每个节点至多被访问两次。</li>
+<li>当链表中存在环时，每一轮移动后，快慢指针的距离将减小一。而初始距离为环的长度，因此至多移动 <em>N</em> 轮。</li>
+</ul>
+</li>
+<li>空间复杂度：<em>O</em>(1)。我们只使用了两个指针的额外空间。</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhangzhang</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/')">（LeetCodeHot100）141. 环形链表——linked-list-cycle</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=（LeetCodeHot100）141. 环形链表——linked-list-cycle&amp;url=http://example.com/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89141.%20%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle/&amp;pic=https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9d629007-9129-5bfa-8c23-bba66bddca35" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">zhangzhang-blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>算法<span class="tagsPageCount">122</span></a><a class="post-meta__box__tags" href="/tags/%E9%93%BE%E8%A1%A8/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>链表<span class="tagsPageCount">33</span></a><a class="post-meta__box__tags" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>双指针<span class="tagsPageCount">15</span></a><a class="post-meta__box__tags" href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>快慢指针<span class="tagsPageCount">5</span></a><a class="post-meta__box__tags" href="/tags/Hash/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Hash<span class="tagsPageCount">9</span></a><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">25</span></a><a class="post-meta__box__tags" href="/tags/LeetCode/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LeetCode<span class="tagsPageCount">25</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=2d2943aa-4e49-209e-c4ae-a7bf5ed57f3b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89136.%20%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97%E2%80%94%E2%80%94single-number/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=e94928f6-5344-4d4b-35a7-711718a0184e" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（LeetCodeHot100）136. 只出现一次的数字——single-number</div></div></a></div><div class="next-post pull-right"><a href="/2025/11/12/%EF%BC%88%E7%94%9F%E6%B4%BB%EF%BC%89%E5%A1%94%E6%96%AF%E6%B1%80%E5%9B%A2%E8%B4%AD%E5%88%B8%E5%8D%95%E4%BB%B7%E5%88%86%E6%9E%90%20&amp;%20%E6%9C%80%E4%BC%98%E8%B4%AD%E4%B9%B0%E6%96%B9%E6%A1%88/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=c864b7f2-f2ee-6391-f79e-345b1f6eeb2a" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">塔斯汀团购券单价分析 &amp; 最优购买方案</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/13/%EF%BC%88LeetCodeHot100%EF%BC%89234.%20%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94palindrome-linked-list/" title="（LeetCodeHot100）234. 回文链表——palindrome-linked-list"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=a7550dfd-5e46-7344-206b-061f97abd8d3" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-13</div><div class="title">（LeetCodeHot100）234. 回文链表——palindrome-linked-list</div></div></a></div><div><a href="/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89160.%20%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94intersection-of-two-linked-lists/" title="（LeetCodeHot100）160. 相交链表——intersection-of-two-linked-lists"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=e53c2f7f-4a81-e6e9-4c7b-db9c23b73e74" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-12</div><div class="title">（LeetCodeHot100）160. 相交链表——intersection-of-two-linked-lists</div></div></a></div><div><a href="/2025/11/13/%EF%BC%88LeetCodeHot100%EF%BC%89206.%20%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94reverse-linked-list/" title="（LeetCodeHot100）206. 反转链表——reverse-linked-list"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=cd298df3-c0ad-2b9c-8253-fcc10248c707" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-13</div><div class="title">（LeetCodeHot100）206. 反转链表——reverse-linked-list</div></div></a></div><div><a href="/2025/11/10/%EF%BC%88LeetCodeHot100%EF%BC%891.%20%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%E2%80%94%E2%80%94two-sum/" title="（LeetCodeHot100）1. 两数之和——two-sum"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=cd13dc55-8822-018d-4d05-9a416932d887" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-10</div><div class="title">（LeetCodeHot100）1. 两数之和——two-sum</div></div></a></div><div><a href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=2d2943aa-4e49-209e-c4ae-a7bf5ed57f3b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water</div></div></a></div><div><a href="/2025/11/17/%EF%BC%88LeetCodeHot100%EF%BC%892.%20%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0%E2%80%94%E2%80%94add-two-numbers/" title="（LeetCodeHot100）2. 两数相加——add-two-numbers"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=104cea2c-5eed-16ef-3be8-21efbf7b4d1d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-17</div><div class="title">（LeetCodeHot100）2. 两数相加——add-two-numbers</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" style="width: 100%; height: auto; display: block; border-radius: 8px;"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#141-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8%E2%80%94%E2%80%94linked-list-cycle"><span class="toc-number">1.</span> <span class="toc-text">141. 环形链表——linked-list-cycle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E6%AD%A3%E7%A1%AE%E7%AD%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">我的正确答案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">1.2.</span> <span class="toc-text">方法一：哈希表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="toc-number">1.3.</span> <span class="toc-text">方法二：快慢指针</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%8920251119%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD3%E2%80%94%E2%80%94%E8%B0%83%E8%AF%95%E5%90%8E%E5%8F%B0&amp;&amp;%E6%B5%8B%E8%AF%95API/" title="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=ed62573e-cdd2-774a-d437-938e788e3b61" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%8920251119%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD3%E2%80%94%E2%80%94%E8%B0%83%E8%AF%95%E5%90%8E%E5%8F%B0&amp;&amp;%E6%B5%8B%E8%AF%95API/" title="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API">（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API</a><time datetime="2025-11-19T08:01:00.000Z" title="发表于 2025-11-19 16:01:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=2d2943aa-4e49-209e-c4ae-a7bf5ed57f3b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water">（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water</a><time datetime="2025-11-19T01:29:00.000Z" title="发表于 2025-11-19 09:29:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%895.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-palindromic-substring/" title="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=7983c472-473c-611c-5c64-8afa76fb1b98" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%895.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-palindromic-substring/" title="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring">（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring</a><time datetime="2025-11-19T01:00:00.000Z" title="发表于 2025-11-19 09:00:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/18/%EF%BC%88LeetCodeHot100%EF%BC%893.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-substring-without-repeating-characters/" title="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=09e41de0-c9d5-c6ed-868f-a3ddc9a0e2f1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters"/></a><div class="content"><a class="title" href="/2025/11/18/%EF%BC%88LeetCodeHot100%EF%BC%893.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-substring-without-repeating-characters/" title="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters">（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters</a><time datetime="2025-11-18T06:21:00.000Z" title="发表于 2025-11-18 14:21:00">2025-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/18/%EF%BC%88%E5%9B%BE%EF%BC%891-6%20%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" title="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=75de9123-cd0a-c8d1-7b96-dd316fbe6ada" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历"/></a><div class="content"><a class="title" href="/2025/11/18/%EF%BC%88%E5%9B%BE%EF%BC%891-6%20%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" title="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历">PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历</a><time datetime="2025-11-18T00:48:00.000Z" title="发表于 2025-11-18 08:48:00">2025-11-18</time></div></div></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>访客地图</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=NrKXiqwOJfxSliMr6I1UmdORp6XDbtPAqaHcIkDWbOc"></script></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhangzhang" target="_blank">zhangzhang</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">141</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 0.88rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 0.88rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 0.88rem;">DFS<sup>5</sup></a><a href="/tags/DP/" style="font-size: 0.88rem;">DP<sup>3</sup></a><a href="/tags/Hash/" style="font-size: 0.88rem;">Hash<sup>9</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>25</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 0.88rem;">LeetCode<sup>25</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 0.88rem;">PTA<sup>92</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>25</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c++<sup>73</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>1</sup></a><a href="/tags/vim/" style="font-size: 0.88rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 0.88rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 0.88rem;">作业<sup>72</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 0.88rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">双指针<sup>15</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 0.88rem;">图<sup>6</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 0.88rem;">复习<sup>5</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">快慢指针<sup>5</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>95</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 0.88rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">树和二叉树<sup>12</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 0.88rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">笔记<sup>3</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>122</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 0.88rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 0.88rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 0.88rem;">贪心<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>33</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 0.88rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 0.88rem;">顺序表<sup>19</sup></a><a href="/tags/%E9%A9%BE%E7%85%A7/" style="font-size: 0.88rem;">驾照<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhangzhang 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

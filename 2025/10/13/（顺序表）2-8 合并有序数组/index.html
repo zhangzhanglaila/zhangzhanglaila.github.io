@@ -1,555 +1,373 @@
-blockquote {
-  border: var(--style-border-always);
-  background-color: var(--anzhiyu-secondbg);
-  color: var(--anzhiyu-secondtext);
-  border-radius: 8px;
-  margin: 1rem 0;
-  padding: 0.5rem 0.8rem;
-}
-#article-container {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-#article-container h1 .post-content,
-#article-container h2 .post-content,
-#article-container h3 .post-content,
-#article-container h4 .post-content,
-#article-container h5 .post-content,
-#article-container h6 .post-content {
-  line-height: 1.6;
-  border-top: 1px dashed var(--anzhiyu-theme-op);
-  padding-top: 1.5rem;
-  padding-left: 0;
-}
-#article-container a {
-  color: $theme-link-color;
-}
-#article-container a:hover {
-  text-decoration: underline;
-}
-#article-container img {
-  display: block;
-  margin: 0 auto 20px;
-  max-width: 100%;
-  transition: 0.3s;
-  border-radius: 8px;
-}
-#article-container p {
-  margin: 0 0 16px;
-}
-#article-container iframe {
-  margin: 0 0 20px;
-  border-radius: 12px;
-}
-#article-container kbd {
-  margin: 0 3px;
-  padding: 3px 5px;
-  border: 1px solid #b4b4b4;
-  border-radius: 3px;
-  background-color: #f8f8f8;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.25), 0 2px 1px 0 rgba(255,255,255,0.6) inset;
-  color: #34495e;
-  white-space: nowrap;
-  font-weight: 600;
-  font-size: 0.9em;
-  font-family: Monaco, 'Ubuntu Mono', monospace;
-  line-height: 1em;
-}
-#article-container h1 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 2rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h1 .headerlink::before {
-  font-size: 2rem;
-}
-#article-container > :first-child:is(h2) {
-  border-top: none;
-  padding-top: 0;
-  margin-top: 0;
-}
-#article-container h2 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 1.8rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h2 .headerlink::before {
-  font-size: 1.8rem;
-}
-#article-container h3 .headerlink,
-#article-container h4 .headerlink,
-#article-container h5 .headerlink,
-#article-container h6 .headerlink {
-  float: right;
-  opacity: 0.08;
-  position: relative;
-  padding: 0px;
-  border: none;
-  line-height: 2;
-  font-size: 1.3rem;
-  border-radius: 8px !important;
-  text-decoration: none;
-  font-weight: 700;
-}
-#article-container h3 .headerlink::before,
-#article-container h4 .headerlink::before,
-#article-container h5 .headerlink::before,
-#article-container h6 .headerlink::before {
-  font-size: 1.3rem;
-}
-#article-container a.headerlink::before {
-  content: '\f0c1';
-  float: right;
-  color: var(--headline-presudo);
-  transition: all 0.3s;
-}
-#article-container a.headerlink:hover:after {
-  color: var(--pseudo-hover);
-}
-#article-container a.headerlink h1:hover a.headerlink:after,
-#article-container a.headerlink h2:hover a.headerlink:after,
-#article-container a.headerlink h3:hover a.headerlink:after,
-#article-container a.headerlink h4:hover a.headerlink:after,
-#article-container a.headerlink h5:hover a.headerlink:after,
-#article-container a.headerlink h6:hover a.headerlink:after {
-  opacity: 1;
-}
-#article-container ol ol,
-#article-container ul ol,
-#article-container ol ul,
-#article-container ul ul {
-  padding-left: 20px;
-}
-#article-container ol li,
-#article-container ul li {
-  margin: 4px 0;
-}
-#article-container ol p,
-#article-container ul p {
-  margin: 0 0 8px;
-}
-#article-container.post-content h1:before {
-  margin-left: -26px;
-  font-size: 20px;
-}
-#article-container.post-content h1:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h2:before {
-  margin-left: -24px;
-  font-size: 18px;
-}
-#article-container.post-content h2:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h3:before {
-  margin-left: -22px;
-  font-size: 16px;
-}
-#article-container.post-content h3:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h4:before {
-  margin-left: -20px;
-  font-size: 14px;
-}
-#article-container.post-content h4:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h5:before {
-  margin-left: -18px;
-  font-size: 12px;
-}
-#article-container.post-content h5:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content h6:before {
-  margin-left: -18px;
-  font-size: 12px;
-}
-#article-container.post-content h6:hover:before {
-  color: $light-blue;
-}
-#article-container.post-content ol p,
-#article-container.post-content ul p {
-  margin: 0 0 8px;
-}
-#article-container.post-content li::marker {
-  color: $light-blue;
-  font-weight: 600;
-  font-size: 1.05em;
-}
-#article-container.post-content li:hover::marker {
-  color: var(--pseudo-hover);
-}
-#article-container > :last-child {
-  margin-bottom: 0 !important;
-}
-#post .post_share {
-  margin: 8px 0 0;
-  width: fit-content;
-  min-width: 205px;
-}
-#post .tag_share {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-}
-#post .tag_share .post-meta__box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-#post .tag_share .post-meta__box__tag-list,
-#post .tag_share .post-meta__box__category-list {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-}
-#post .tag_share .post-meta__box__tags,
-#post .tag_share .post-meta__box__categoryes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4px 12px;
-  width: fit-content;
-  border-radius: 8px;
-  font-size: 0.85em;
-  transition: all 0.2s ease-in-out;
-maxWidth768()
-}
-#post .tag_share .post-meta__box__tags {
-  margin: 0px 8px 0px 0;
-}
-#post .tag_share .post-meta__box__categoryes {
-  margin: 0px 8px 4px 0;
-}
-#post .tag_share .post-meta__box__categoryes:hover {
-  background: $light-blue;
-  color: var(--white);
-}
-#post .tag_share .post-meta .social-share {
-  font-size: 0.85em;
-}
-#post .tag_share .post-meta .social-share .social-share-icon {
-  margin: 0 4px;
-  width: 1.85em;
-  height: 1.85em;
-  font-size: 1.2em;
-  line-height: 1.85em;
-}
-#post .post-copyright {
-  background: var(--anzhiyu-secondbg);
-  padding: 1rem 1.3rem;
-  border: var(--style-border);
-  border-width: 1px;
-  transition: 0.3s;
-  position: relative;
-  margin: 80px 0 30px;
-  border-radius: 12px;
-}
-#post .post-copyright .copyright-cc-box {
-  position: absolute;
-  right: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  pointer-events: none;
-}
-#post .post-copyright__author_box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top: 1.5rem;
-}
-#post .post-copyright__author_box .post-copyright__author_img {
-  width: 66px;
-  height: 66px;
-  margin: auto;
-  border-radius: 66px;
-  overflow: hidden;
-  position: absolute;
-  left: calc(50% - 33px);
-  top: -33px;
-  border: var(--style-border-always);
-  box-shadow: var(--anzhiyu-shadow-main);
-}
-#post .post-copyright__author_box .post-copyright__author_img:hover img.post-copyright__author_img_back {
-  z-index: 21;
-  transform: translateY(0px);
-}
-#post .post-copyright__author_box .post-copyright__author_img img.post-copyright__author_img_front {
-  z-index: 20;
-  transition: 0.3s;
-}
-#post .post-copyright__author_box .post-copyright__author_img img.post-copyright__author_img_back {
-  border-radius: 66px;
-  z-index: 10;
-  transition: 0.3s;
-}
-#post .post-copyright__author_box .post-copyright__author_img img {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-#post .post-copyright__author_box .post-copyright__author_name {
-  text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--anzhiyu-fontcolor);
-  line-height: 1;
-}
-#post .post-copyright__author_box .post-copyright__author_desc {
-  text-align: center;
-  font-size: 14px;
-  color: var(--anzhiyu-secondtext);
-  margin-top: 4px;
-}
-#post .post-copyright__post__info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 0.2rem;
-}
-#post .post-copyright__original,
-#post .post-copyright__reprint {
-  background: var(--anzhiyu-main);
-  color: var(--anzhiyu-wihite-font);
-  padding: 0.2rem 1rem;
-  font-size: 0.8rem;
-  border-radius: 8px;
-  margin-right: 0.5rem;
-  font-weight: bold;
-  line-height: 1.5;
-  white-space: nowrap;
-  user-select: none;
-}
-#post .post-copyright .anzhiyufont.anzhiyu-icon-copyright {
-  position: absolute;
-  font-size: 1.3em;
-  top: -71px;
-  right: -20px;
-  font-size: 8.3em;
-  z-index: -1;
-  color: var(--anzhiyu-main);
-}
-@media screen and (min-width: 1365px) {
-  #post .post-copyright .anzhiyufont.anzhiyu-icon-copyright {
-    z-index: 0;
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>PTA（顺序表）2-8 合并有序数组 | zhangzhang-blog</title><meta name="keywords" content="数据结构,算法,c++,PTA,双指针,顺序表,作业,Merge"><meta name="author" content="zhangzhang"><meta name="copyright" content="zhangzhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="PTA（顺序表）2-8 合并有序数组"><meta name="application-name" content="PTA（顺序表）2-8 合并有序数组"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="PTA（顺序表）2-8 合并有序数组"><meta property="og:url" content="http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/index.html"><meta property="og:site_name" content="zhangzhang-blog"><meta property="og:description" content="2-8 合并有序数组分数 7 作者 伍建全 单位 重庆科技大学 给定2个非降序序列，要求把他们合并成1个非降序序列。假设所有元素个数为N，要求算法的时间复杂度为O(N)。 输入格式:输入有4行。第1行是一个正整数m，表示第2行有m个整数，这些整数构成一个非降序序列，每个整数之间以空格隔开。第3行是一"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=82f07a8b-debd-9f63-f646-7ed1596a57d6"><meta property="article:author" content="zhangzhang"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=82f07a8b-debd-9f63-f646-7ed1596a57d6"><meta name="description" content="2-8 合并有序数组分数 7 作者 伍建全 单位 重庆科技大学 给定2个非降序序列，要求把他们合并成1个非降序序列。假设所有元素个数为N，要求算法的时间复杂度为O(N)。 输入格式:输入有4行。第1行是一个正整数m，表示第2行有m个整数，这些整数构成一个非降序序列，每个整数之间以空格隔开。第3行是一"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: zhangzhang","link":"链接: ","source":"来源: zhangzhang-blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'zhangzhang-blog',
+  title: 'PTA（顺序表）2-8 合并有序数组',
+  postAI: '',
+  pageFillDescription: '2-8 合并有序数组, 输入格式, 输出格式, 输入样例, 输出样例, 答案合并有序数组分数作者伍建全单位重庆科技大学给定个非降序序列要求把他们合并成个非降序序列假设所有元素个数为要求算法的时间复杂度为输入格式输入有行第行是一个正整数表示第行有个整数这些整数构成一个非降序序列每个整数之间以空格隔开第行是一个正整数表示第行有个整数这些整数也构成一个非降序序列每个整数之间以空格隔开输出格式把第行的个整数和第行的个整数合并成一个非降序序列输出这个整数序列每个数之间隔个空格输入样例输出样例答案定义顺序表结构初始化顺序表将元素插入到顺序表尾部将两个表合并当前小先插入新表当前小先插入新表当先读取完把剩余的移到新表中当先读取完把剩余的移到新表中先读取第一个顺序表的元素个数将元素填入表读取第二个顺序表的元素个数将元素填入表合并两个顺序表到一个新顺序表中输出合并之后的表归并操作基于双指针技术数据结构选择您使用了基于动态数组的顺序表来存储序列这对于顺序访问和插入尾部非常高效核心算法双指针您维护了两个指针和分别指向两个输入序列和的当前未处理元素比较与选择在循环中您不断比较和将较小的那个元素插入到结果序列中这保证了始终保持非降序时间复杂度每次比较都会将一个元素移动到最终序列中因此总共的比较和移动次数是达到了题目要求的时间复杂度处理剩余元素在一个序列被完全遍历后您使用了两个独立的循环将另一个序列中剩余的所有元素它们本身已经有序直接复制到结果序列的末尾',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-05 09:19:13',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339617.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
   }
 }
-#post .post-copyright-title {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-weight: 500;
-  max-width: 70%;
-}
-#post .post-copyright-title span {
-  cursor: pointer;
-}
-#post .post-copyright-title:hover {
-  color: var(--anzhiyu-fontcolor);
-}
-#post .post-copyright .post-copyright__notice {
-  font-size: 12px;
-}
-#post .post-copyright .post-copyright__notice .post-copyright-info {
-  padding-left: 0;
-  color: var(--anzhiyu-secondtext);
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-align: center;
-maxWidth768()
-}
-#post .post-copyright .post-copyright__notice .post-copyright-info a:hover {
-  color: var(--anzhiyu-main);
-}
-#post .post-outdate-notice {
-  position: relative;
-  margin: 0 0 20px;
-  padding: 0.5em 1.2em;
-  border-radius: 3px;
-  background-color: $noticeOutdate-bg;
-  color: $noticeOutdate-color;
-  padding: 0.5em 1em 0.5em 2.6em;
-  border-left: 5px solid $noticeOutdate-border;
-}
-#post .post-outdate-notice:before {
-  position: absolute;
-  top: 50%;
-  left: 0.9em;
-  color: $noticeOutdate-border;
-  transform: translateY(-50%);
-}
-#post .ads-wrap {
-  margin: 40px 0;
-}
-#post #content-inner.layout #article-container h1,
-#post #content-inner.layout #article-container h2,
-#post #content-inner.layout #article-container h3,
-#post #content-inner.layout #article-container h4,
-#post #content-inner.layout #article-container h5,
-#post #content-inner.layout #article-container h6 {
-  padding-left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-direction: row-reverse;
-}
-.post-ai-description {
-  background: var(--anzhiyu-secondbg);
-  border-radius: 12px;
-  padding: 12px 16px;
-  line-height: 1.3;
-  border: var(--style-border-always);
-  margin-bottom: 10px;
-}
-.ai-title {
-  display: flex;
-  color: var(--font-color);
-  border-radius: 8px;
-  align-items: center;
-  padding: 0 5px;
-}
-.ai-title i {
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 20px;
-  height: 20px;
-}
-.ai-title .anzhiyufont.anzhiyu-icon-circle-dot {
-  margin-left: auto;
-  margin-right: 4px;
-  font-size: 14px;
-  opacity: 0;
-}
-.ai-title .anzhiyufont.anzhiyu-icon-circle-dot:active {
-  transform: scale(0.97);
-}
-.ai-title .anzhiyufont.anzhiyu-icon-arrow-rotate-right {
-  font-size: 14px;
-  margin-left: 4px;
-  cursor: pointer;
-}
-.ai-title .ai-title-text {
-  font-weight: bold;
-  margin-left: 8px;
-}
-#ai-tag {
-  font-size: 12px;
-  background-color: var(--anzhiyu-lighttext);
-  color: rgba(255,255,255,0.9);
-  border-radius: 4px;
-  line-height: 1;
-  padding: 4px 5px;
-  cursor: pointer;
-}
-#ai-Toggle {
-  font-size: 12px;
-  background: var(--anzhiyu-lighttext);
-  color: var(--anzhiyu-card-bg);
-  padding: 4px;
-  border-radius: 4px;
-  margin-left: 6px;
-  transform: scale(0.8);
-  cursor: pointer;
-  transition: 0.3s;
-  font-weight: bold;
-}
-#ai-Toggle:hover {
-  background: var(--anzhiyu-fontcolor);
-  color: var(--anzhiyu-card-bg);
-}
-#go-tianli-blog {
-  display: none;
-}
-.ai-explanation {
-  margin-top: 12px;
-  padding: 8px 12px;
-  background: var(--anzhiyu-card-bg);
-  border-radius: 8px;
-  border: var(--style-border-always);
-  font-size: 15px;
-  line-height: 1.4;
-}
-.ai-cursor {
-  display: inline-block;
-  width: 7px;
-  background: #333;
-  height: 16px;
-  margin-bottom: -2px;
-  opacity: 0.95;
-  margin-left: 3px;
-  transition: all 0.3s;
-}
-[data-theme="dark"] .ai-cursor {
-  background: #fff;
-}
-.ai-btn-box {
-  font-size: 15.5px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.ai-btn-item {
-  padding: 5px 10px;
-  margin: 10px 16px 0px 5px;
-  width: fit-content;
-  line-height: 1;
-  background: var(--anzhiyu-main);
-  color: #fff;
-  border-radius: 6px;
-  user-select: none;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-.ai-btn-item:hover {
-  background: var(--anzhiyu-theme);
-}
-.ai-recommend {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.ai-recommend .ai-recommend-item {
-  width: calc(50% - 20px);
-  margin: 10px;
-  background: var(--anzhiyu-secondbg);
-  border-radius: 4px;
-  padding: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-  animation: slide-in 0.6s 0.1s backwards;
-}
-.ai-recommend .ai-recommend-item span.index {
-  padding: 4px;
-}
-.ai-recommend .ai-recommend-item:hover {
-  color: var(--anzhiyu-white);
-  background: var(--anzhiyu-theme);
-}
-.ai-recommend .ai-recommend-item:hover a {
-  color: var(--anzhiyu-white);
-}
-maxWidth768()
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">zhangzhang-blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.05rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 1.05rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 1.05rem;">DFS<sup>5</sup></a><a href="/tags/DP/" style="font-size: 1.05rem;">DP<sup>3</sup></a><a href="/tags/Hash/" style="font-size: 1.05rem;">Hash<sup>9</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>25</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 1.05rem;">LeetCode<sup>25</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 1.05rem;">PTA<sup>92</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>25</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c++<sup>73</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/java/" style="font-size: 1.05rem;">java<sup>1</sup></a><a href="/tags/vim/" style="font-size: 1.05rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 1.05rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 1.05rem;">作业<sup>72</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 1.05rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">双指针<sup>15</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 1.05rem;">图<sup>6</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 1.05rem;">复习<sup>5</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">快慢指针<sup>5</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>95</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 1.05rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">树和二叉树<sup>12</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.05rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">笔记<sup>3</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>122</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 1.05rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 1.05rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.05rem;">贪心<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>33</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.05rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 1.05rem;">顺序表<sup>19</sup></a><a href="/tags/%E9%A9%BE%E7%85%A7/" style="font-size: 1.05rem;">驾照<sup>2</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">62</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">74</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>数据结构</span></a><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a><a class="article-meta__tags" href="/tags/c/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>c++</span></a><a class="article-meta__tags" href="/tags/PTA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>PTA</span></a><a class="article-meta__tags" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>双指针</span></a><a class="article-meta__tags" href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>顺序表</span></a><a class="article-meta__tags" href="/tags/%E4%BD%9C%E4%B8%9A/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>作业</span></a><a class="article-meta__tags" href="/tags/Merge/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Merge</span></a></span></div></div><h1 class="post-title" itemprop="name headline">PTA（顺序表）2-8 合并有序数组</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-13T11:56:00.000Z" title="发表于 2025-10-13 19:56:00">2025-10-13</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-05T01:19:13.194Z" title="更新于 2025-11-05 09:19:13">2025-11-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">894</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="PTA（顺序表）2-8 合并有序数组"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为武汉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>武汉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=82f07a8b-debd-9f63-f646-7ed1596a57d6"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"><header><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" tabindex="-1" itemprop="url">数据结构</a><a href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url">算法</a><a href="/tags/c/" tabindex="-1" itemprop="url">c++</a><a href="/tags/PTA/" tabindex="-1" itemprop="url">PTA</a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" tabindex="-1" itemprop="url">双指针</a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" tabindex="-1" itemprop="url">顺序表</a><a href="/tags/%E4%BD%9C%E4%B8%9A/" tabindex="-1" itemprop="url">作业</a><a href="/tags/Merge/" tabindex="-1" itemprop="url">Merge</a><h1 id="CrawlerTitle" itemprop="name headline">PTA（顺序表）2-8 合并有序数组</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhangzhang</span><time itemprop="dateCreated datePublished" datetime="2025-10-13T11:56:00.000Z" title="发表于 2025-10-13 19:56:00">2025-10-13</time><time itemprop="dateCreated datePublished" datetime="2025-11-05T01:19:13.194Z" title="更新于 2025-11-05 09:19:13">2025-11-05</time></header><h1 id="2-8-合并有序数组"><a href="#2-8-合并有序数组" class="headerlink" title="2-8 合并有序数组"></a>2-8 合并有序数组</h1><p>分数 7</p>
+<p>作者 伍建全</p>
+<p>单位 重庆科技大学</p>
+<p>给定2个非降序序列，要求把他们合并成1个非降序序列。假设所有元素个数为N，要求算法的时间复杂度为O(N)。</p>
+<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式:"></a>输入格式:</h3><p>输入有4行。<br>第1行是一个正整数m，表示第2行有m个整数，这些整数构成一个非降序序列，每个整数之间以空格隔开。第3行是一个正整数n，表示第4行有n个整数，这些整数也构成一个非降序序列，每个整数之间以空格隔开。</p>
+<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式:"></a>输出格式:</h3><p>把第2行的m个整数和第4行的n个整数合并成一个非降序序列，输出这个整数序列。每个数之间隔1个空格。</p>
+<h3 id="输入样例"><a href="#输入样例" class="headerlink" title="输入样例:"></a>输入样例:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">1 3 6 6 8 9  </span><br><span class="line">4</span><br><span class="line">2 4 5 7</span><br></pre></td></tr></table></figure>
+
+<h3 id="输出样例"><a href="#输出样例" class="headerlink" title="输出样例:"></a>输出样例:</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 2 3 4 5 6 6 7 8 9 </span><br></pre></td></tr></table></figure>
+
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义顺序表结构</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> &#123;</span><br><span class="line">    <span class="type">int</span> *data;</span><br><span class="line">    <span class="type">int</span> length;</span><br><span class="line">&#125; sqList;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化顺序表</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">initList</span><span class="params">(sqList &amp;L, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    L.data = <span class="keyword">new</span> <span class="type">int</span>[n];</span><br><span class="line">    L.length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将元素x插入到顺序表尾部</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insertElem</span><span class="params">(sqList &amp;L, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    L.data[L.length] = x;</span><br><span class="line">    L.length++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将两个表合并</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">combineList</span><span class="params">(sqList &amp;L, sqList L1, sqList L2)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (i != L<span class="number">1.l</span>ength &amp;&amp; j != L<span class="number">2.l</span>ength) &#123;</span><br><span class="line">        <span class="keyword">if</span> (L<span class="number">1.</span>data[i] &lt;= L<span class="number">2.</span>data[j]) &#123; <span class="comment">// L1当前小，先插入新表</span></span><br><span class="line">            <span class="built_in">insertElem</span>(L, L<span class="number">1.</span>data[i]);</span><br><span class="line">            i++;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (L<span class="number">1.</span>data[i] &gt; L<span class="number">2.</span>data[j]) &#123; <span class="comment">// L2当前小，先插入新表</span></span><br><span class="line">            <span class="built_in">insertElem</span>(L, L<span class="number">2.</span>data[j]);</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当L1先读取完，把L2剩余的移到新表中</span></span><br><span class="line">    <span class="keyword">while</span> (j != L<span class="number">2.l</span>ength) &#123;</span><br><span class="line">        <span class="built_in">insertElem</span>(L, L<span class="number">2.</span>data[j]);</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 当L2先读取完，把L1剩余的移到新表中</span></span><br><span class="line">    <span class="keyword">while</span> (i != L<span class="number">1.l</span>ength) &#123;</span><br><span class="line">        <span class="built_in">insertElem</span>(L, L<span class="number">1.</span>data[i]);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> m, n;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; m; <span class="comment">// 先读取第一个顺序表的元素个数</span></span><br><span class="line">    sqList L1;</span><br><span class="line">    <span class="built_in">initList</span>(L1, m);</span><br><span class="line">    <span class="comment">// 将元素填入表1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; L<span class="number">1.</span>data[i];</span><br><span class="line">        L<span class="number">1.l</span>ength++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    cin &gt;&gt; n; <span class="comment">// 读取第二个顺序表的元素个数</span></span><br><span class="line">    sqList L2;</span><br><span class="line">    <span class="built_in">initList</span>(L2, n);</span><br><span class="line">    <span class="comment">// 将元素填入表2</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; L<span class="number">2.</span>data[i];</span><br><span class="line">        L<span class="number">2.l</span>ength++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合并两个顺序表到一个新顺序表中</span></span><br><span class="line">    sqList L;</span><br><span class="line">    <span class="built_in">initList</span>(L, m+n);</span><br><span class="line">    <span class="built_in">combineList</span>(L, L1, L2);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出合并之后的表</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; L.length; ++i) &#123;</span><br><span class="line"><span class="comment">//        if (i != 0) &#123;</span></span><br><span class="line"><span class="comment">//            cout &lt;&lt; &quot; &quot;;</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        cout &lt;&lt; L.data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>归并（Merge）操作</strong>，基于**双指针（Two Pointers）**技术。</p>
+<ol>
+<li><strong>数据结构选择：</strong> 您使用了基于动态数组的 <code>sqList</code> (顺序表) 来存储序列，这对于顺序访问和 O(1) 插入尾部非常高效。</li>
+<li><strong>核心算法 <code>combineList</code>：</strong><ul>
+<li><strong>双指针：</strong> 您维护了两个指针 <code>i</code> 和 <code>j</code>，分别指向两个输入序列 <code>L1</code> 和 <code>L2</code> 的当前未处理元素。</li>
+<li><strong>比较与选择：</strong> 在 <code>while</code> 循环中，您不断比较 <code>L1.data[i]</code> 和 <code>L2.data[j]</code>，将<strong>较小的那个</strong>元素插入到结果序列 <code>L</code> 中。这保证了 <code>L</code> 始终保持非降序。</li>
+<li><strong>时间复杂度 O(N)：</strong> 每次比较都会将一个元素移动到最终序列中，因此总共的比较和移动次数是 m+n&#x3D;N，达到了题目要求的 O(N) 时间复杂度。</li>
+</ul>
+</li>
+<li><strong>处理剩余元素：</strong> 在一个序列被完全遍历后，您使用了两个独立的 <code>while</code> 循环将另一个序列中剩余的所有元素（它们本身已经有序）直接复制到结果序列 <code>L</code> 的末尾。</li>
+</ol>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhangzhang</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/')">PTA（顺序表）2-8 合并有序数组</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=PTA（顺序表）2-8 合并有序数组&amp;url=http://example.com/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-8%20%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/&amp;pic=https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=82f07a8b-debd-9f63-f646-7ed1596a57d6" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">zhangzhang-blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>数据结构<span class="tagsPageCount">95</span></a><a class="post-meta__box__tags" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>算法<span class="tagsPageCount">122</span></a><a class="post-meta__box__tags" href="/tags/c/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>c++<span class="tagsPageCount">73</span></a><a class="post-meta__box__tags" href="/tags/PTA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>PTA<span class="tagsPageCount">92</span></a><a class="post-meta__box__tags" href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>双指针<span class="tagsPageCount">15</span></a><a class="post-meta__box__tags" href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>顺序表<span class="tagsPageCount">19</span></a><a class="post-meta__box__tags" href="/tags/%E4%BD%9C%E4%B8%9A/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>作业<span class="tagsPageCount">72</span></a><a class="post-meta__box__tags" href="/tags/Merge/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Merge<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=2d2943aa-4e49-209e-c4ae-a7bf5ed57f3b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-7%20%E8%BF%90%E7%94%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9B%B8%E5%8A%A0/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=fffd8364-e6d5-46a6-9491-11d2679c510b" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PTA（顺序表）2-7 运用顺序表实现多项式相加</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/14/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-9%20%E5%9C%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%20list%20%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%20x/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=fb818b25-a13d-d0eb-fd76-eb9fa29c77bd" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PTA（顺序表）2-9 在顺序表 list 中查找元素 x</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/13/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-7%20%E8%BF%90%E7%94%A8%E9%A1%BA%E5%BA%8F%E8%A1%A8%E5%AE%9E%E7%8E%B0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%9B%B8%E5%8A%A0/" title="PTA（顺序表）2-7 运用顺序表实现多项式相加"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=fffd8364-e6d5-46a6-9491-11d2679c510b" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-13</div><div class="title">PTA（顺序表）2-7 运用顺序表实现多项式相加</div></div></a></div><div><a href="/2025/10/19/%EF%BC%88%E9%93%BE%E8%A1%A8%EF%BC%892-3%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88C++%EF%BC%89/" title="PTA（链表）2-3 两个有序链表序列的合并（C++）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=c5b8f40c-d90f-fd20-5eba-12f1f370551c" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-19</div><div class="title">PTA（链表）2-3 两个有序链表序列的合并（C++）</div></div></a></div><div><a href="/2025/10/21/%EF%BC%88%E9%93%BE%E8%A1%A8%EF%BC%892-6%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%90%88%E5%B9%B6%EF%BC%88%E6%96%B0%E8%A1%A8%E4%B8%8D%E5%90%AB%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0%EF%BC%89/" title="PTA（链表）2-6 两个有序链表合并（新表不含重复元素）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=1e5cb310-7c83-3d17-d423-3c7a11825a11" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-21</div><div class="title">PTA（链表）2-6 两个有序链表合并（新表不含重复元素）</div></div></a></div><div><a href="/2025/10/12/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-1%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" title="PTA（顺序表）2-1 两个有序序列的中位数"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=6c3e7f46-3cf0-66e0-fd80-b73697e54240" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-12</div><div class="title">PTA（顺序表）2-1 两个有序序列的中位数</div></div></a></div><div><a href="/2025/10/14/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-12%20%E7%BA%BF%E6%80%A7%E8%A1%A8%E5%BE%AA%E7%8E%AF%E5%8F%B3%E7%A7%BB/" title="PTA（顺序表）2-12 线性表循环右移"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9179a3c8-e2e6-441d-ac41-be3e69b371a5" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-14</div><div class="title">PTA（顺序表）2-12 线性表循环右移</div></div></a></div><div><a href="/2025/10/16/%EF%BC%88%E9%93%BE%E8%A1%A8%EF%BC%891-6%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%BA%8F%E5%88%97%E7%9A%84%E5%90%88%E5%B9%B6%EF%BC%88C%EF%BC%89/" title="PTA（链表）1-6 两个有序链表序列的合并（C）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=76d7eeeb-1802-6d6b-1536-3b3da0782e26" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-16</div><div class="title">PTA（链表）1-6 两个有序链表序列的合并（C）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" style="width: 100%; height: auto; display: block; border-radius: 8px;"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-8-%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">2-8 合并有序数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.0.1.</span> <span class="toc-text">输入格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.0.2.</span> <span class="toc-text">输出格式:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.0.3.</span> <span class="toc-text">输入样例:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B"><span class="toc-number">1.0.4.</span> <span class="toc-text">输出样例:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">答案</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%8920251119%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD3%E2%80%94%E2%80%94%E8%B0%83%E8%AF%95%E5%90%8E%E5%8F%B0&amp;&amp;%E6%B5%8B%E8%AF%95API/" title="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=ed62573e-cdd2-774a-d437-938e788e3b61" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%8920251119%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD3%E2%80%94%E2%80%94%E8%B0%83%E8%AF%95%E5%90%8E%E5%8F%B0&amp;&amp;%E6%B5%8B%E8%AF%95API/" title="（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API">（项目）20251119大数据项目实施3——调试后台&amp;&amp;测试API</a><time datetime="2025-11-19T08:01:00.000Z" title="发表于 2025-11-19 16:01:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=2d2943aa-4e49-209e-c4ae-a7bf5ed57f3b" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water">（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water</a><time datetime="2025-11-19T01:29:00.000Z" title="发表于 2025-11-19 09:29:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%895.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-palindromic-substring/" title="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=7983c472-473c-611c-5c64-8afa76fb1b98" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring"/></a><div class="content"><a class="title" href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%895.%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-palindromic-substring/" title="（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring">（LeetCodeHot100）5. 最长回文子串——longest-palindromic-substring</a><time datetime="2025-11-19T01:00:00.000Z" title="发表于 2025-11-19 09:00:00">2025-11-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/18/%EF%BC%88LeetCodeHot100%EF%BC%893.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-substring-without-repeating-characters/" title="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=09e41de0-c9d5-c6ed-868f-a3ddc9a0e2f1" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters"/></a><div class="content"><a class="title" href="/2025/11/18/%EF%BC%88LeetCodeHot100%EF%BC%893.%20%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2%E2%80%94%E2%80%94longest-substring-without-repeating-characters/" title="（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters">（LeetCodeHot100）3. 无重复字符的最长子串——longest-substring-without-repeating-characters</a><time datetime="2025-11-18T06:21:00.000Z" title="发表于 2025-11-18 14:21:00">2025-11-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/11/18/%EF%BC%88%E5%9B%BE%EF%BC%891-6%20%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" title="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=75de9123-cd0a-c8d1-7b96-dd316fbe6ada" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历"/></a><div class="content"><a class="title" href="/2025/11/18/%EF%BC%88%E5%9B%BE%EF%BC%891-6%20%E5%AE%9E%E7%8E%B0%E5%9F%BA%E4%BA%8E%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86/" title="PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历">PTA（图）1-6 实现基于邻接矩阵表示的深度优先遍历</a><time datetime="2025-11-18T00:48:00.000Z" title="发表于 2025-11-18 08:48:00">2025-11-18</time></div></div></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>访客地图</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=NrKXiqwOJfxSliMr6I1UmdORp6XDbtPAqaHcIkDWbOc"></script></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhangzhang" target="_blank">zhangzhang</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">141</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">55</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 0.88rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 0.88rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 0.88rem;">DFS<sup>5</sup></a><a href="/tags/DP/" style="font-size: 0.88rem;">DP<sup>3</sup></a><a href="/tags/Hash/" style="font-size: 0.88rem;">Hash<sup>9</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>25</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 0.88rem;">LeetCode<sup>25</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 0.88rem;">PTA<sup>92</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>25</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c++<sup>73</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/java/" style="font-size: 0.88rem;">java<sup>1</sup></a><a href="/tags/vim/" style="font-size: 0.88rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 0.88rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 0.88rem;">作业<sup>72</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 0.88rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">双指针<sup>15</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 0.88rem;">图<sup>6</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 0.88rem;">复习<sup>5</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">快慢指针<sup>5</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>95</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 0.88rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">树和二叉树<sup>12</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 0.88rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">笔记<sup>3</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>122</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 0.88rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 0.88rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 0.88rem;">贪心<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>33</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 0.88rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 0.88rem;">顺序表<sup>19</sup></a><a href="/tags/%E9%A9%BE%E7%85%A7/" style="font-size: 0.88rem;">驾照<sup>2</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhangzhang 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
