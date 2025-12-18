@@ -1,0 +1,477 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>教程——阿里云图床搭建：博客图片存储方案 | zhangzhang-blog</title><meta name="keywords" content="工具,阿里云,图床搭建"><meta name="author" content="zhangzhang"><meta name="copyright" content="zhangzhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="教程——阿里云图床搭建：博客图片存储方案"><meta name="application-name" content="教程——阿里云图床搭建：博客图片存储方案"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="教程——阿里云图床搭建：博客图片存储方案"><meta property="og:url" content="http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/index.html"><meta property="og:site_name" content="zhangzhang-blog"><meta property="og:description" content="本文引用手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会-阿里云开发者社区 手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会简介： 本文详细介绍了怎样帮助新手小白从注册，购买阿里云OSS，到一步一步配置OSS做为图床，和PicG"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=5a08eed7-ff85-6746-ca1e-a07557d0e834"><meta property="article:author" content="zhangzhang"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=5a08eed7-ff85-6746-ca1e-a07557d0e834"><meta name="description" content="本文引用手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会-阿里云开发者社区 手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会简介： 本文详细介绍了怎样帮助新手小白从注册，购买阿里云OSS，到一步一步配置OSS做为图床，和PicG"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: zhangzhang","link":"链接: ","source":"来源: zhangzhang-blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'zhangzhang-blog',
+  title: '教程——阿里云图床搭建：博客图片存储方案',
+  postAI: '',
+  pageFillDescription: '手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)新手小白一看就会, 为什么要搭建图床？, 阿里云OSS搭建图床, 1. 注册登录阿里云, 2. 开通OSS服务, 3. 创建OSS Bucket, 4. 记下Bucket信息, 5. 创建AccessKey, 6. 创建子账户用来配置PicGo, 8.公共读需修改, 配置PicGo, 1. 安装PicGo, 2. PicGo配置阿里云OSS, 3. PicGo其他配置, 配置Typora, 总结本文引用手把手教你搭建阿里云图床阿里云新手小白一看就会阿里云开发者社区手把手教你搭建阿里云图床阿里云新手小白一看就会简介本文详细介绍了怎样帮助新手小白从注册购买阿里云到一步一步配置做为图床和软件连接配置好关联之后在使用写文章时如果需要插入图片只需要将图片复制粘贴到的编辑区域就会自动通过上传到指定图床自动复制外网能访问的并展示简直不要太方便极大的解决了编辑文章时复制处理图片链接的痛点为什么要搭建图床经常在博客写文章或者搭建自己的网站时肯定需要往里面加图片对吧有人可能会想我直接把图片保存在电脑上不就行了其实这样也不是不可以但问题来了如果你想把你的文章转载到别的地方那些在本地的图片别人是看不到的你得一个个去复制粘贴真是够呛这时候如果用阿里云或者腾讯云来搭建一个图床问题就迎刃而解了用这些服务处理图片简直高效到不行说到国内用得多的腾讯云和阿里云绝对是排前面的速度快就是要花点钱至于的那是免费的但是最近被封了很多小伙伴都都已经深受其好而且速度超慢之前一直在薅的免费图床羊毛这两天发现网站上的图片无法显示了桑心只能自己动手来搭建图床找了一圈阿里云腾讯云的组合较多接下来跟着我这个手残党一起来一步一步搭建图床吧我选择的是阿里云作为例子这里并不是对腾讯云有什么偏见哦腾讯云也非常棒大家自己选择阿里云搭建图床注册登录阿里云打开阿里云官方网站点击右上角的登录注册开通服务如果你还没有开通对象存储服务那么点击立即开通现在新人可以免费试用三个月存储包再点击立即开通勾选服务协议后点击立即开通创建开通成功后点击管理控制台进入控制台之后点击红框的立即创建或者创建都可以创建接下来填一些必填的信息名称必须全局唯一和你在游戏中取的名字一样不能和别人的重名一旦创建不可更改地域选择有地域属性然后选择一个离自己位置近的地域存储类型选择标准存储即可存储冗余类型推荐选择本地冗余存储同城冗余存储更贵如果网站有较高的并发流量可以选择这个读写权限一定要选择公共读否则平台无法通过公网访问中的内容其他选择默认无需修改这里公共读点不了后面弄点击下面的确认按钮然后点弹出框的我知道了确认创建创建成功点击进入记下信息点击概览进入概览页面这里可以看到的整体信息用文本软件记下红框画起来的几个信息等会儿配置要用名称地域节点域名外网地址创建在页面右上角鼠标放在头像处在弹出的框里选择管理在弹出的选项框里选择继续使用点击创建在弹出的安全验证窗口中选择一个方式来通过安全验证把图中的资料下载成或者复制下来保存好这个类似于你的密码一定不要泄露创建子账户用来配置重要上面生成的是主账户的它也可以用来配置但是如果我们只是需要使用强烈建议使用子账号来访问这个这样可以规避主账户或者密码泄露导致的问题步骤如下点击创建再点击开始使用子用户点击创建用户填写好登录名称显示名称勾选控制台访问调用访问其他选择默认就好点击确认在弹出的安全验证中选择一种方式完成验证将红框中的和复制出来保存好配置时要用到配置子账户权限勾选中用户点击添加权限再点击下面两项权限加到已选择框中选择这两项管理对象存储服务权限只读访问对象存储服务的权限点击确定授权成功了这时阿里云相关的配置就弄好了之前让保存的信息要记好哦后面还会用到如果后面不需要使用该账号点击用户后面的删除选项即可公共读需修改配置安装是一款功能非常强大的图床工具支持腾讯图床七牛云图床图床阿里云等多种图床平台下载地址下载正式版或者测试版都可以正式版会稳定一些测试版有一些尝鲜功能用国内可下载链接进行下载会快一些我这里选择的是这个测试版安装好了之后打开界面是这样的配置阿里云点击图床设置阿里云点击画笔修改填上前面记录好的值即可账号密钥设定刚刚在阿里云中创建的名称设定存储区域地域节点中的第一个字段划重点这里一定要注意设定存储区域里要填的是之前记下来的地域节点里面的第一个字段比如你的地域节点值是那么这里只需要填切记否则配置失败无法上传图片设定存储路径自定义以结尾相当于文件夹例如填完了记得拉到下面点击确认保存点击设为默认图床其他配置你可以根据喜好来设置文件以时间戳格式命名和上传后自动复制上传图片测试成功到这里就配置完成了配置是一款简洁而强大的编辑器它提供实时预览功能让用户可以即时查看文档的渲染效果采用所见即所得的编辑模式没有繁杂的标记符号用户可以专注于写作而不必分心处理格式此外还支持数学公式表格图像等丰富的语法和扩展功能总之是一款易用且功能丰富的编辑器适用于撰写各种类型的文档下载安装登录官网拉到最下面下载目前已经收费不过我们还可以考虑用其他办法来使用它比如这个配置连接打开之后页面非常简洁点击左上角文件偏好设置图像插入图片时选择上传图片上传服务选择路径选择你安装到本机的的目录选中都填好了不要忘记点击验证图片上传选项来验证一下验证成功这时候你再打开可以看到自动上传了测试图片到表示已经连通好了所有的配置都完成了你也赶快去试一试吧总结最大的特点是可以和阿里云腾讯云等各大图床软件连接又可以和结合使用配置好关联之后在使用写文章时如果需要插入图片只需要将图片复制粘贴到的编辑区域就会自动通过上传到指定图床自动复制外网能访问的并展示简直不要太方便极大的解决了编辑文章时复制处理图片链接的痛点相关链接阿里云官网网站阿里云',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-04 23:32:00',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339617.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">zhangzhang-blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.05rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 1.05rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 1.05rem;">DFS<sup>11</sup></a><a href="/tags/DP/" style="font-size: 1.05rem;">DP<sup>8</sup></a><a href="/tags/Hash/" style="font-size: 1.05rem;">Hash<sup>10</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>50</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 1.05rem;">LeetCode<sup>47</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 1.05rem;">PTA<sup>93</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>28</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c++<sup>75</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/vim/" style="font-size: 1.05rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 1.05rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 1.05rem;">作业<sup>73</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 1.05rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">双指针<sup>20</sup></a><a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 1.05rem;">回溯<sup>6</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 1.05rem;">图<sup>8</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 1.05rem;">复习<sup>6</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">快慢指针<sup>6</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>98</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 1.05rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">树和二叉树<sup>15</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.05rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">笔记<sup>4</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>148</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 1.05rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 1.05rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.05rem;">贪心<sup>2</sup></a><a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 1.05rem;">递归<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>34</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.05rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 1.05rem;">顺序表<sup>19</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">64</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">74</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%B7%A5%E5%85%B7/" itemprop="url">技术工具</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>工具</span></a><a class="article-meta__tags" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>阿里云</span></a><a class="article-meta__tags" href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>图床搭建</span></a></span></div></div><h1 class="post-title" itemprop="name headline">教程——阿里云图床搭建：博客图片存储方案</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-10-11T14:45:00.000Z" title="发表于 2025-10-11 22:45:00">2025-10-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-11-04T15:32:00.079Z" title="更新于 2025-11-04 23:32:00">2025-11-04</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.3k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="教程——阿里云图床搭建：博客图片存储方案"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为武汉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>武汉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=5a08eed7-ff85-6746-ca1e-a07557d0e834"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/"><header><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E5%B7%A5%E5%85%B7/" itemprop="url">技术工具</a><a href="/tags/%E5%B7%A5%E5%85%B7/" tabindex="-1" itemprop="url">工具</a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" tabindex="-1" itemprop="url">阿里云</a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" tabindex="-1" itemprop="url">图床搭建</a><h1 id="CrawlerTitle" itemprop="name headline">教程——阿里云图床搭建：博客图片存储方案</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhangzhang</span><time itemprop="dateCreated datePublished" datetime="2025-10-11T14:45:00.000Z" title="发表于 2025-10-11 22:45:00">2025-10-11</time><time itemprop="dateCreated datePublished" datetime="2025-11-04T15:32:00.079Z" title="更新于 2025-11-04 23:32:00">2025-11-04</time></header><p>本文引用<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1465963">手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会-阿里云开发者社区</a></p>
+<h1 id="手把手教你搭建阿里云图床-PicGo-Typora-阿里云OSS-，新手小白一看就会"><a href="#手把手教你搭建阿里云图床-PicGo-Typora-阿里云OSS-，新手小白一看就会" class="headerlink" title="手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会"></a>手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会</h1><p><strong>简介：</strong> 本文详细介绍了怎样帮助新手小白从注册，购买阿里云OSS，到一步一步配置OSS做为图床，和<code>PicGo</code>、Typora软件连接，配置好关联之后，在使用Typora写文章时，如果需要插入图片，只需要将图片复制粘贴到Typora的编辑区域，就会自动通过<code>PicGo</code>上传到指定图床，自动复制外网能访问的URL并展示，简直不要太方便，极大的解决了编辑文章时复制处理图片链接的痛点。</p>
+<h1 id="为什么要搭建图床？"><a href="#为什么要搭建图床？" class="headerlink" title="为什么要搭建图床？"></a>为什么要搭建图床？</h1><p>经常在<strong>博客</strong>写文章或者搭建自己的<strong>网站</strong>时，肯定需要往里面加图片对吧。有人可能会想，我直接把图片保存在电脑上不就行了？其实这样也不是不可以，但问题来了，如果你想把<strong>你的文章转载到别的地方</strong>，那些在本地的图片别人是看不到的，你得一个个去复制粘贴，真是够呛！</p>
+<p>这时候，如果用阿里云OSS或者腾讯云COS来搭建一个图床，问题就迎刃而解了。用这些服务，处理图片简直高效到不行。说到国内用得多的，腾讯云和阿里云绝对是排前面的，速度快，就是要花点钱。至于GitHub的gitee，那是免费的，但是最近被封了，很多小伙伴都都已经深受其好，而且速度超慢。</p>
+<p>之前一直在薅mdnice的免费图床羊毛，这两天发现网站上的图片无法显示了，桑心，只能自己动手来搭建图床，找了一圈，<strong>Typora+PicGo+阿里云OSS/腾讯云COS</strong>的组合较多，接下来跟着我这个手残党一起来一步一步搭建图床吧，我选择的是阿里云作为例子，这里并不是对腾讯云有什么偏见哦，腾讯云也非常棒，大家自己选择。</p>
+<h1 id="阿里云OSS搭建图床"><a href="#阿里云OSS搭建图床" class="headerlink" title="阿里云OSS搭建图床"></a>阿里云OSS搭建图床</h1><h2 id="1-注册登录阿里云"><a href="#1-注册登录阿里云" class="headerlink" title="1. 注册登录阿里云"></a>1. 注册登录阿里云</h2><hr>
+<p>打开阿里云官方网站<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/oss?source=5176.11533457&userCode=">https://www.aliyun.com/product/oss</a>，点击右上角的登录/注册</p>
+<p> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112237060.webp" alt="image.png"> </p>
+<h2 id="2-开通OSS服务"><a href="#2-开通OSS服务" class="headerlink" title="2. 开通OSS服务"></a>2. 开通OSS服务</h2><hr>
+<p>如果你还没有开通对象存储服务OSS，那么点击立即开通，现在新人可以免费试用三个月，存储包 20 GB。</p>
+<p>再点击立即开通 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112237922.png" alt="1760104289796"></p>
+<p>勾选服务协议后，点击立即开通</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112237567.png" alt="1760104404746"></p>
+<h2 id="3-创建OSS-Bucket"><a href="#3-创建OSS-Bucket" class="headerlink" title="3. 创建OSS Bucket"></a>3. 创建OSS Bucket</h2><hr>
+<p>开通成功后，点击管理控制台</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112237536.png" alt="1760104452985">进入控制台之后，点击红框的立即创建或者创建Bucket，都可以创建Bucket</p>
+<p>接下来填一些必填的信息：</p>
+<ul>
+<li>Bucket 名称：必须全局唯一，和你在游戏中取的名字一样，不能和别人的重名，一旦创建不可更改。</li>
+<li>地域：选择“有地域属性”，然后选择一个离自己位置近的地域。<br>存储类型：选择“标准存储”即可。</li>
+<li>存储冗余类型：推荐选择“本地冗余存储”，“同城冗余存储”更贵，如果网站有较高的并发流量可以选择这个。</li>
+<li>读写权限：一定要选择“公共读”，否则平台无法通过公网访问 Bucket 中的内容。</li>
+<li>其他选择默认，无需修改。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112237909.png" alt="1760107703283"></p>
+<ul>
+<li><p>这里公共读点不了，后面弄</p>
+<p>点击下面的确认按钮，然后点弹出框的我知道了，确认创建。 </p>
+<p>创建成功，点击进入Bucket </p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238303.png" alt="1760111175068"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238512.png" alt="1760107770500"></p>
+<h2 id="4-记下Bucket信息"><a href="#4-记下Bucket信息" class="headerlink" title="4. 记下Bucket信息"></a>4. 记下Bucket信息</h2><hr>
+<p>点击概览</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238771.png" alt="1760111141464"></p>
+<p>进入概览页面，这里可以看到bucket的整体信息。<br>用文本软件记下红框画起来的几个信息，等会儿配置PicGo要用：</p>
+<ul>
+<li>Bucket名称：aitechshare-com</li>
+<li>Endpoint（地域节点）：xxxx</li>
+<li>Bucket域名（外网地址）：xxxx</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238866.png" alt="1760107946604"></p>
+<h2 id="5-创建AccessKey"><a href="#5-创建AccessKey" class="headerlink" title="5. 创建AccessKey"></a>5. 创建AccessKey</h2><hr>
+<p>在页面右上角，鼠标放在头像处，在弹出的框里选择AccessKey管理</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238389.png" alt="1760110358475"></p>
+<p>在弹出的选项框里，选择继续使用AccessKey。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238633.png" alt="1760110375709"></p>
+<p>点击创建AccessKey，在弹出的安全验证窗口中，选择一个方式来通过安全验证。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112238437.png" alt="1760110691642"></p>
+<p> 把图中的资料下载成csv，或者复制下来保存好，这个类似于你的密码，一定不要泄露。 </p>
+<h2 id="6-创建子账户用来配置PicGo"><a href="#6-创建子账户用来配置PicGo" class="headerlink" title="6. 创建子账户用来配置PicGo"></a>6. 创建子账户用来配置PicGo</h2><hr>
+<p>重要！上面生成的AccessKey是主账户的，它也可以用来配置picgo，但是如果我们只是需要使用OSS，强烈建议使用子账号来访问这个Bucket，这样可以规避主账户AccessKey或者密码泄露导致的问题。步骤如下：<br>点击创建 AccessKey，再点击开始使用子用户 AccessKey</p>
+<p> 点击创建用户 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112239822.png" alt="1760111015472"></p>
+<p>填写好登录名称，显示名称，勾选控制台访问，OpenAPI调用访问，其他选择默认就好，点击确认，在弹出的安全验证中选择一种方式完成验证。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112239544.png" alt="1760111074495"></p>
+<p>将红框中的AccessKey Id和AccessKey secret复制出来保存好，配置PicGo时要用到。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112232939.png" alt="1760111097126"></p>
+<ol start="7">
+<li>配置子账户OSS权限</li>
+</ol>
+<hr>
+<hr>
+<p>勾选中用户，点击添加权限，再点击下面两项权限，加到已选择框中。</p>
+<p>选择这两项：</p>
+<ul>
+<li>AliyunOSSFullAccess——管理对象存储服务（OSS）权限</li>
+<li>AliyunOSSReadOnlyAccess——只读访问对象存储服务（OSS）的权限</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240094.png" alt="1760111434634"></p>
+<p> 点击确定，授权成功了，这时阿里云相关的配置就弄好了。 之前让保存的信息要记好哦，后面还会用到。 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240119.png" alt="1760111463733"></p>
+<p>如果后面不需要使用该账号，点击用户后面的删除选项即可。</p>
+<h2 id="8-公共读需修改"><a href="#8-公共读需修改" class="headerlink" title="8.公共读需修改"></a>8.公共读需修改</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240582.png" alt="image-20251011223138477"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240812.png" alt="image-20251011223644563"></p>
+<h1 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h1><h2 id="1-安装PicGo"><a href="#1-安装PicGo" class="headerlink" title="1. 安装PicGo"></a>1. 安装PicGo</h2><hr>
+<p>PicGo是一款功能非常强大的图床工具，支持SM.MS、腾讯COS、GitHub图床、七牛云图床、Imgur图床、阿里云OSS、gitee等多种图床平台。</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a><br>下载正式版或者测试版都可以，正式版会稳定一些，测试版有一些尝鲜功能，用国内可下载链接进行下载会快一些，我这里选择的是<a target="_blank" rel="noopener" href="https://picgo-release.molunerfinn.com/2.4.0-beta.6/PicGo-Setup-2.4.0-beta.6-x64.exe">PicGo-Setup-2.4.0-beta.6-x64.exe</a>这个测试版。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240033.png" alt="1760160026200"></p>
+<p> 安装好了之后，打开界面是这样的。 </p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240607.png" alt="1760160053199"></p>
+<h2 id="2-PicGo配置阿里云OSS"><a href="#2-PicGo配置阿里云OSS" class="headerlink" title="2. PicGo配置阿里云OSS"></a>2. PicGo配置阿里云OSS</h2><hr>
+<p>点击图床设置，阿里云OSS，点击画笔修改。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240375.png" alt="1760160075992"></p>
+<p>填上前面记录好的值即可</p>
+<ul>
+<li>AccessKey ID（账号）：xxxxxxxxxx</li>
+<li>AccessKey Secret（密钥）：xxxxxxxxxx</li>
+<li>设定Bucket：刚刚在阿里云OSS中创建的Bucket名称</li>
+<li>设定存储区域：地域节点中的第一个字段</li>
+</ul>
+<p><strong>划重点！这里一定要注意，设定存储区域里要填的是之前记下来的地域节点里面的第一个字段，比如你的地域节点值是oss-cn-shanghai.aliyuncs.com，那么这里只需要填oss-cn-shanghai，切记，否则配置失败无法上传图片。</strong></p>
+<ul>
+<li>设定存储路径：自定义，以/结尾（相当于文件夹），例如 img/</li>
+</ul>
+<p>填完了记得拉到下面点击确认保存。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240710.png" alt="1760160590544"></p>
+<p>点击设为默认图床</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240413.png" alt="1760160649673"></p>
+<h2 id="3-PicGo其他配置"><a href="#3-PicGo其他配置" class="headerlink" title="3. PicGo其他配置"></a>3. PicGo其他配置</h2><hr>
+<p>你可以根据喜好来设置文件以时间戳格式命名 和 上传后自动复制URL：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240062.png" alt="1760161046517"></p>
+<p>上传图片，测试成功！</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240546.png" alt="1760161073544"></p>
+<p>到这里PicGo就配置完成了</p>
+<h1 id="配置Typora"><a href="#配置Typora" class="headerlink" title="配置Typora"></a>配置Typora</h1><p>Typora是一款简洁而强大的Markdown编辑器。它提供实时预览功能，让用户可以即时查看文档的渲染效果。Typora采用所见即所得的编辑模式，没有繁杂的标记符号，用户可以专注于写作而不必分心处理格式。此外，Typora还支持数学公式、表格、图像等丰富的Markdown语法和扩展功能。总之，Typora是一款易用且功能丰富的Markdown编辑器，适用于撰写各种类型的文档。</p>
+<ol>
+<li>下载安装Typora</li>
+</ol>
+<hr>
+<p>登录Typora官网<a target="_blank" rel="noopener" href="https://typora.io/">https://typora.io</a>，拉到最下面下载Typora.</p>
+<p>目前Typora已经收费，不过我们还可以考虑用其他办法来使用它，比如这个<a target="_blank" rel="noopener" href="https://github.com/shuhongfan/TyporaCrack">https://github.com/shuhongfan/TyporaCrack</a> </p>
+<ol start="2">
+<li>配置Typora连接PicGo</li>
+</ol>
+<hr>
+<p>打开Typora之后，页面非常简洁。<br>点击左上角文件-偏好设置-图像，插入图片时选择上传图片，上传服务选择PicGo(app)，PicGo 路径选择你安装到本机的PicGo的目录，选中PicGo.exe。<br>都填好了，不要忘记点击验证图片上传选项来验证一下。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240231.png" alt="1760161133294"></p>
+<p>验证成功!</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112242492.png" alt="image-20251011223541666"></p>
+<p>这时候你再打开Picgo，可以看到Typora自动上传了测试图片到Picgo，表示已经连通。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510112240018.png" alt="image-20251011223558199"></p>
+<p>好了，所有的配置都完成了，你也赶快去试一试吧~</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>PicGo最大的特点是，可以和阿里云，腾讯云等各大图床软件连接，又可以和Typora结合使用，配置好关联之后，在使用Typora写文章时，如果需要插入图片，只需要将图片复制粘贴到Typora的编辑区域，就会自动通过PicGo上传到指定图床，自动复制外网能访问的URL并展示，简直不要太方便，极大的解决了编辑文章时复制处理图片链接的痛点。</p>
+<p>相关链接：<br><a target="_blank" rel="noopener" href="https://www.aliyun.com/?source=5176.11533457&userCode=">阿里云官网网站</a><br><a target="_blank" rel="noopener" href="https://www.aliyun.com/product/oss?source=5176.11533457&userCode=">阿里云OSS</a></p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhangzhang</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/')">教程——阿里云图床搭建：博客图片存储方案</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=教程——阿里云图床搭建：博客图片存储方案&amp;url=http://example.com/2025/10/11/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/&amp;pic=https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=5a08eed7-ff85-6746-ca1e-a07557d0e834" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">zhangzhang-blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E5%B7%A5%E5%85%B7/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>工具<span class="tagsPageCount">9</span></a><a class="post-meta__box__tags" href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>阿里云<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>图床搭建<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=290df112-f150-9da5-b23b-34c6c6b42ab3" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/10/10/%E5%AE%9E%E9%AA%8C2-1%20%E6%B1%82%E9%93%BE%E5%BC%8F%E7%BA%BF%E6%80%A7%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%AC%20m%20%E9%A1%B9%EF%BC%88C++%E7%89%88%EF%BC%89/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=9aa04bd8-f128-0383-d0da-3fc6039575a6" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">PTA 实验2-1 求链式线性表的倒数第 m 项（C++版）</div></div></a></div><div class="next-post pull-right"><a href="/2025/10/12/%EF%BC%88%E9%A1%BA%E5%BA%8F%E8%A1%A8%EF%BC%892-1%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E5%BA%8F%E5%88%97%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=8ee5b493-9ca9-1f63-eade-1af4d985410e" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PTA（顺序表）2-1 两个有序序列的中位数</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/10/29/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89git%E5%BF%85%E5%A4%87%E6%93%8D%E4%BD%9C/" title="教程——git必备操作"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=bb1ee414-d284-6093-1907-48e6748c1efc" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-29</div><div class="title">教程——git必备操作</div></div></a></div><div><a href="/2025/10/30/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89vi%E5%92%8Cvim%E7%BC%96%E8%BE%91%E5%99%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="教程——vi和vim编辑器使用"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=023ce89a-a2b9-7a59-273c-23e7c8747b8d" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-30</div><div class="title">教程——vi和vim编辑器使用</div></div></a></div><div><a href="/2025/11/04/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%8D%9A%E5%AE%A2%E4%B8%AD%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E8%80%85%E4%BD%8D%E7%BD%AE%E6%95%99%E7%A8%8B%EF%BC%88%E5%8F%AA%E8%83%BD%E6%98%BE%E7%A4%BA%E5%88%B0%E5%B8%82%E7%BA%A7%EF%BC%89/" title="教程——博客中获取访问者位置（只能显示到市级）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=e6984a94-0052-ed6e-8c5d-e4ecd37aaa31" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-04</div><div class="title">教程——博客中获取访问者位置（只能显示到市级）</div></div></a></div><div><a href="/2025/11/03/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%88%A9%E7%94%A8%20Excel%20%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90%20SQL%20%E8%AF%AD%E5%8F%A5%EF%BC%8C%E5%BF%AB%E9%80%9F%E6%9B%B4%E6%96%B0%E5%AD%A6%E9%99%A2%E6%8B%86%E5%88%86%E5%90%8E%E7%9A%84%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF/" title="教程——利用 Excel 批量生成 SQL 语句，快速更新学院拆分后的学生信息"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=36876fdb-9e1f-02bb-df4d-550fb81a0ac9" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-03</div><div class="title">教程——利用 Excel 批量生成 SQL 语句，快速更新学院拆分后的学生信息</div></div></a></div><div><a href="/2025/11/04/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%8D%9A%E5%AE%A2%E4%B8%AD%E8%8E%B7%E5%8F%96%E8%AE%BF%E9%97%AE%E8%80%85%E4%BD%8D%E7%BD%AE%E6%95%99%E7%A8%8B%EF%BC%88%E7%B2%BE%E7%A1%AE%E5%88%B0%E5%8C%BA%EF%BC%89/" title="教程——博客中获取访问者位置（精确到区）"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=cb503f57-4717-f46a-7ecc-292b735227d6" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-04</div><div class="title">教程——博客中获取访问者位置（精确到区）</div></div></a></div><div><a href="/2025/10/29/%EF%BC%88%E6%95%99%E7%A8%8B%EF%BC%89%E5%8D%9A%E5%AE%A2%E4%B8%AD%E8%AE%BE%E7%BD%AE%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD/" title="教程——博客中设置字数统计功能"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=56fe3153-c9ea-6a28-1a39-bf1c2c1760a1" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-10-29</div><div class="title">教程——博客中设置字数统计功能</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" style="width: 100%; height: auto; display: block; border-radius: 8px;"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%8B%E6%8A%8A%E6%89%8B%E6%95%99%E4%BD%A0%E6%90%AD%E5%BB%BA%E9%98%BF%E9%87%8C%E4%BA%91%E5%9B%BE%E5%BA%8A-PicGo-Typora-%E9%98%BF%E9%87%8C%E4%BA%91OSS-%EF%BC%8C%E6%96%B0%E6%89%8B%E5%B0%8F%E7%99%BD%E4%B8%80%E7%9C%8B%E5%B0%B1%E4%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">手把手教你搭建阿里云图床(PicGo+Typora+阿里云OSS)，新手小白一看就会</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">为什么要搭建图床？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A"><span class="toc-number">3.</span> <span class="toc-text">阿里云OSS搭建图床</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95%E9%98%BF%E9%87%8C%E4%BA%91"><span class="toc-number">3.1.</span> <span class="toc-text">1. 注册登录阿里云</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BC%80%E9%80%9AOSS%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.2.</span> <span class="toc-text">2. 开通OSS服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BAOSS-Bucket"><span class="toc-number">3.3.</span> <span class="toc-text">3. 创建OSS Bucket</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%B0%E4%B8%8BBucket%E4%BF%A1%E6%81%AF"><span class="toc-number">3.4.</span> <span class="toc-text">4. 记下Bucket信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%88%9B%E5%BB%BAAccessKey"><span class="toc-number">3.5.</span> <span class="toc-text">5. 创建AccessKey</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%9B%E5%BB%BA%E5%AD%90%E8%B4%A6%E6%88%B7%E7%94%A8%E6%9D%A5%E9%85%8D%E7%BD%AEPicGo"><span class="toc-number">3.6.</span> <span class="toc-text">6. 创建子账户用来配置PicGo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%85%AC%E5%85%B1%E8%AF%BB%E9%9C%80%E4%BF%AE%E6%94%B9"><span class="toc-number">3.7.</span> <span class="toc-text">8.公共读需修改</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEPicGo"><span class="toc-number">4.</span> <span class="toc-text">配置PicGo</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85PicGo"><span class="toc-number">4.1.</span> <span class="toc-text">1. 安装PicGo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-PicGo%E9%85%8D%E7%BD%AE%E9%98%BF%E9%87%8C%E4%BA%91OSS"><span class="toc-number">4.2.</span> <span class="toc-text">2. PicGo配置阿里云OSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-PicGo%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="toc-number">4.3.</span> <span class="toc-text">3. PicGo其他配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AETypora"><span class="toc-number">5.</span> <span class="toc-text">配置Typora</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/17/%EF%BC%88%E5%A4%8D%E4%B9%A0%EF%BC%89%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%A1%AB%E7%A9%BA/" title="数据结构复习——填空"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=290df112-f150-9da5-b23b-34c6c6b42ab3" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构复习——填空"/></a><div class="content"><a class="title" href="/2025/12/17/%EF%BC%88%E5%A4%8D%E4%B9%A0%EF%BC%89%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%A1%AB%E7%A9%BA/" title="数据结构复习——填空">数据结构复习——填空</a><time datetime="2025-12-17T01:26:00.000Z" title="发表于 2025-12-17 09:26:00">2025-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8998.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94validate-binary-search-tree/" title="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=4ee28a7f-9e28-8c2e-be49-5e3485462c8e" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8998.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94validate-binary-search-tree/" title="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree">（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree</a><time datetime="2025-12-15T07:32:00.000Z" title="发表于 2025-12-15 15:32:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/" title="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/" title="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees">（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees</a><time datetime="2025-12-15T05:51:00.000Z" title="发表于 2025-12-15 13:51:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8979.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%E2%80%94%E2%80%94word-search/" title="（LeetCodeHot100）79. 单词搜索——word-search"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=46fee01d-4f2f-503b-3b6f-b42f35c49043" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）79. 单词搜索——word-search"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8979.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%E2%80%94%E2%80%94word-search/" title="（LeetCodeHot100）79. 单词搜索——word-search">（LeetCodeHot100）79. 单词搜索——word-search</a><time datetime="2025-12-15T02:13:00.000Z" title="发表于 2025-12-15 10:13:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/14/%EF%BC%88LeetCodeHot100%EF%BC%8978.%20%E5%AD%90%E9%9B%86%E2%80%94%E2%80%94subsets/" title="（LeetCodeHot100）78. 子集——subsets"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=03cba674-0c66-d0be-70f2-2e33be6b2ef2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）78. 子集——subsets"/></a><div class="content"><a class="title" href="/2025/12/14/%EF%BC%88LeetCodeHot100%EF%BC%8978.%20%E5%AD%90%E9%9B%86%E2%80%94%E2%80%94subsets/" title="（LeetCodeHot100）78. 子集——subsets">（LeetCodeHot100）78. 子集——subsets</a><time datetime="2025-12-14T07:28:00.000Z" title="发表于 2025-12-14 15:28:00">2025-12-14</time></div></div></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>访客地图</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=NrKXiqwOJfxSliMr6I1UmdORp6XDbtPAqaHcIkDWbOc"></script></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhangzhang" target="_blank">zhangzhang</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 0.88rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 0.88rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 0.88rem;">DFS<sup>11</sup></a><a href="/tags/DP/" style="font-size: 0.88rem;">DP<sup>8</sup></a><a href="/tags/Hash/" style="font-size: 0.88rem;">Hash<sup>10</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>50</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 0.88rem;">LeetCode<sup>47</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 0.88rem;">PTA<sup>93</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>28</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c++<sup>75</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/vim/" style="font-size: 0.88rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 0.88rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 0.88rem;">作业<sup>73</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 0.88rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">双指针<sup>20</sup></a><a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 0.88rem;">回溯<sup>6</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 0.88rem;">图<sup>8</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 0.88rem;">复习<sup>6</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">快慢指针<sup>6</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>98</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 0.88rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">树和二叉树<sup>15</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 0.88rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">笔记<sup>4</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>148</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 0.88rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 0.88rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 0.88rem;">贪心<sup>2</sup></a><a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 0.88rem;">递归<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>34</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 0.88rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 0.88rem;">顺序表<sup>19</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhangzhang 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

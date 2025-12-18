@@ -1,0 +1,469 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees | zhangzhang-blog</title><meta name="keywords" content="算法,树和二叉树,Java,LeetCode,DP"><meta name="author" content="zhangzhang"><meta name="copyright" content="zhangzhang"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><meta name="application-name" content="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><meta property="og:url" content="http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/index.html"><meta property="og:site_name" content="zhangzhang-blog"><meta property="og:description" content="96. 不同的二叉搜索树——unique-binary-search-trees给你一个整数 n ，求恰由 n 个节点组成且节点值从 1 到 n 互不相同的 二叉搜索树 有多少种？返回满足题意的二叉搜索树的种数。 示例 1：  12输入：n &amp;#x3D; 3输出：5  示例 2： 12输入：n &amp;#x3D; 1输出：1"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54"><meta property="article:author" content="zhangzhang"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54"><meta name="description" content="96. 不同的二叉搜索树——unique-binary-search-trees给你一个整数 n ，求恰由 n 个节点组成且节点值从 1 到 n 互不相同的 二叉搜索树 有多少种？返回满足题意的二叉搜索树的种数。 示例 1：  12输入：n &amp;#x3D; 3输出：5  示例 2： 12输入：n &amp;#x3D; 1输出：1"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/"><link rel="preconnect" href="//cdn.cbd.int"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2024/07/27/125766904/ba62475f396df9de3316a08ed9e65d86_5680958632268053399..png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
+  LA51: undefined,
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  music_page_default: "nav_music",
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":null},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: zhangzhang","link":"链接: ","source":"来源: zhangzhang-blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'zhangzhang-blog',
+  title: '（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees',
+  postAI: '',
+  pageFillDescription: '96. 不同的二叉搜索树——unique-binary-search-trees, 第一想法, 官方答案, 方法一：动态规划, 清晰解释, 第一步：为什么需要「计算 i 个节点的情况」？, 第二步：用具体例子帮你打通（N=4总节点数 4）不同的二叉搜索树给你一个整数求恰由个节点组成且节点值从到互不相同的二叉搜索树有多少种返回满足题意的二叉搜索树的种数示例输入输出示例输入输出提示第一想法二叉搜索树就是左小右大用回溯法先选一个然后递归回溯但是如果是先选的话后面的顺序是和创建的二叉搜索树是一样的官方答案方法一动态规划思路给定一个有序序列为了构建出一棵二叉搜索树我们可以遍历每个数字将该数字作为树根将序列作为左子树将序列作为右子树接着我们可以按照同样的方式递归构建左子树和右子树在上述构建的过程中由于根的值不同因此我们能保证每棵二叉搜索树是唯一的由此可见原问题可以分解成规模较小的两个子问题且子问题的解可以复用因此我们可以想到使用动态规划来求解本题算法题目要求是计算不同二叉搜索树的个数为此我们可以定义两个函数长度为的序列能构成的不同二叉搜索树的个数以为根序列长度为的不同二叉搜索树个数可见是我们求解需要的函数稍后我们将看到可以从得到而又会递归地依赖于首先根据上一节中的思路不同的二叉搜索树的总数是对遍历所有的之和换言之对于边界情况当序列长度为只有根或为空树时只有一种情况即给定序列我们选择数字作为根则根为的所有二叉搜索树的集合是左子树集合和右子树集合的笛卡尔积对于笛卡尔积中的每个元素加上根节点之后形成完整的二叉搜索树如下图所示举例而言创建以为根长度为的不同二叉搜索树整个序列是我们需要从左子序列构建左子树从右子序列构建右子树然后将它们组合即笛卡尔积对于这个例子不同二叉搜索树的个数为我们将构建不同左子树的数量表示为从构建不同右子树的数量表示为注意到和序列的内容无关只和序列的长度有关于是因此我们可以得到以下公式将公式结合可以得到的递归表达式至此我们从小到大计算函数即可因为的值依赖于复杂度分析时间复杂度其中表示二叉搜索树的节点个数函数一共有个值需要求解每次求解需要的时间复杂度因此总时间复杂度为空间复杂度我们需要的空间存储数组清晰解释假设个节点存在二叉排序树的个数是令为以为根的二叉搜索树的个数则当为根节点时其左子树节点个数为个右子树节点为则难点就在于这个地方首先这个公式翻译一下就是以为根节点的二叉搜索树的数量等于以的总数的二叉搜索树的数量乘以以的二叉搜索树的数量什么意思呢意思就是假设有那么就有以这个数字为根节点的二叉搜索树的数量等于以为总数的二叉搜索树的数量乘以以为总数的二叉搜索树的数量注意此时和和三个数字代表的是不同的意义第一个是根节点第二个是总数第三个还是总数想象一下这个数字的左边很明显仅能够从到这个数字进行挑选这很好理解因为二叉搜索树的左子树的所有值都必须小于根节点它们继续在的左子树下面排列组合得出的最终各种排列的总数就是重点在后面在这个数字的根节点的右边很显然只能是到这个数字进行排列组合此时很多人不理解为什么到的排列组合的总数等于从字面意义上看也就是从到的排列组合的总数其实道理很简单将到这些数字排列组合的总数是等于从到的排列组合的总数的因为将替换为将替换为以此类推下去将替换为就很容易理解了因为本质上就是个从大到小的不同的数进行二叉树的排列组合不论是到还是从到所排列组合的二叉树数量是一样的所以这也就解释了这个公式为什么是因为在这个根节点的左边有到这些数字在不断进行排列组合得出总的排列组合数在的右边有到这些数字同样的在不断的进行排列组合得出总的排列组合数自然而然的作为根节点时所能得到的不同组合就是了第一步为什么需要计算个节点的情况因为这是动态规划的核心思想从小到大递推要算出个节点的二叉搜索树总数必须先知道比小的所有节点数对应的总数因为当总节点数是时选任意作为根左子树的节点数是比如时左子树个节点右子树的节点数是右子树个节点而左子树个节点的总数是右子树个节点的总数是这些都是比小的节点数对应的结果必须提前算好代码里的外层循环本质就是依次计算个节点个节点直到个节点的总数把这些中间结果存到数组里后面计算更大的时直接复用不用重复计算第二步用具体例子帮你打通总节点数我们跟着代码走一遍看个节点的计算是怎么服务于最终的初始化空树基础个节点种树计算个节点的总数枚举根节点左个右个贡献枚举根节点左个右个贡献得个节点有种树计算个节点的总数枚举左右枚举左右枚举左右得个节点有种树计算最终要的个节点总数枚举左右枚举左右枚举左右枚举左右得个节点有种树你看计算时完全依赖之前算好的这就是为什么需要先算个节点的情况用小问题的答案拼出大问题的答案',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-12-15 15:52:30',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339617.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">zhangzhang-blog</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 1.05rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 1.05rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 1.05rem;">DFS<sup>11</sup></a><a href="/tags/DP/" style="font-size: 1.05rem;">DP<sup>8</sup></a><a href="/tags/Hash/" style="font-size: 1.05rem;">Hash<sup>10</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>50</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 1.05rem;">LeetCode<sup>47</sup></a><a href="/tags/MySQL/" style="font-size: 1.05rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 1.05rem;">PTA<sup>93</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c<sup>28</sup></a><a href="/tags/c/" style="font-size: 1.05rem;">c++<sup>75</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/vim/" style="font-size: 1.05rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 1.05rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 1.05rem;">作业<sup>73</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 1.05rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">双指针<sup>20</sup></a><a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 1.05rem;">回溯<sup>6</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 1.05rem;">图<sup>8</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 1.05rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 1.05rem;">复习<sup>6</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 1.05rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 1.05rem;">快慢指针<sup>6</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 1.05rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>98</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 1.05rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 1.05rem;">树和二叉树<sup>15</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.05rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.05rem;">笔记<sup>4</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>148</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 1.05rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 1.05rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 1.05rem;">贪心<sup>2</sup></a><a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 1.05rem;">递归<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 1.05rem;">链表<sup>34</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 1.05rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 1.05rem;">顺序表<sup>19</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/12/"><span class="card-archive-list-date">十二月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">26</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/11/"><span class="card-archive-list-date">十一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">64</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/10/"><span class="card-archive-list-date">十月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">74</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">八月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/04/"><span class="card-archive-list-date">四月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>算法</span></a><a class="article-meta__tags" href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>树和二叉树</span></a><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/LeetCode/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>LeetCode</span></a><a class="article-meta__tags" href="/tags/DP/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>DP</span></a></span></div></div><h1 class="post-title" itemprop="name headline">（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-12-15T05:51:00.000Z" title="发表于 2025-12-15 13:51:00">2025-12-15</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-12-15T07:52:30.039Z" title="更新于 2025-12-15 15:52:30">2025-12-15</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span class="post-meta-wordcount"><i class="anzhiyufont anzhiyu-icon-file-word post-meta-icon" title="文章字数"></i><span class="post-meta-label" title="文章字数">字数总计:</span><span class="word-count" title="文章字数">2.3k</span><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-clock post-meta-icon" title="阅读时长"></i><span class="post-meta-label" title="阅读时长">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator"></span><span class="post-meta-pv-cv" id="" data-flag-title="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="busuanzi_value_page_pv"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为武汉"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>武汉</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/"><header><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url">算法题解</a><a href="/tags/%E7%AE%97%E6%B3%95/" tabindex="-1" itemprop="url">算法</a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" tabindex="-1" itemprop="url">树和二叉树</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/LeetCode/" tabindex="-1" itemprop="url">LeetCode</a><a href="/tags/DP/" tabindex="-1" itemprop="url">DP</a><h1 id="CrawlerTitle" itemprop="name headline">（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">zhangzhang</span><time itemprop="dateCreated datePublished" datetime="2025-12-15T05:51:00.000Z" title="发表于 2025-12-15 13:51:00">2025-12-15</time><time itemprop="dateCreated datePublished" datetime="2025-12-15T07:52:30.039Z" title="更新于 2025-12-15 15:52:30">2025-12-15</time></header><h1 id="96-不同的二叉搜索树——unique-binary-search-trees"><a href="#96-不同的二叉搜索树——unique-binary-search-trees" class="headerlink" title="96. 不同的二叉搜索树——unique-binary-search-trees"></a>96. 不同的二叉搜索树——unique-binary-search-trees</h1><p>给你一个整数 <code>n</code> ，求恰由 <code>n</code> 个节点组成且节点值从 <code>1</code> 到 <code>n</code> 互不相同的 <strong>二叉搜索树</strong> 有多少种？返回满足题意的二叉搜索树的种数。</p>
+<p><strong>示例 1：</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202512151549339.jpg" alt="img"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 3</span><br><span class="line">输出：5</span><br></pre></td></tr></table></figure>
+
+<p><strong>示例 2：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>1 &lt;= n &lt;= 19</code></li>
+</ul>
+<hr>
+<h2 id="第一想法"><a href="#第一想法" class="headerlink" title="第一想法"></a>第一想法</h2><ul>
+<li><p>二叉搜索树就是左小右大</p>
+</li>
+<li><p>用回溯法，先选一个，然后递归，回溯</p>
+</li>
+<li><p>但是如果是先选2的话，后面的顺序是13和31创建的二叉搜索树是一样的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  2</span><br><span class="line"> / \</span><br><span class="line">1	3</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="官方答案"><a href="#官方答案" class="headerlink" title="官方答案"></a>官方答案</h2><h4 id="方法一：动态规划"><a href="#方法一：动态规划" class="headerlink" title="方法一：动态规划"></a>方法一：动态规划</h4><p><strong>思路</strong></p>
+<p>给定一个有序序列 1⋯<em>n</em>，为了构建出一棵二叉搜索树，我们可以遍历每个数字 <em>i</em>，将该数字作为树根，将 1⋯(<em>i</em>−1) 序列作为左子树，将 (<em>i</em>+1)⋯<em>n</em> 序列作为右子树。接着我们可以按照同样的方式递归构建左子树和右子树。</p>
+<p>在上述构建的过程中，由于根的值不同，因此我们能保证每棵二叉搜索树是唯一的。</p>
+<p>由此可见，原问题可以分解成规模较小的两个子问题，且子问题的解可以复用。因此，我们可以想到使用动态规划来求解本题。</p>
+<p><strong>算法</strong></p>
+<p>题目要求是计算不同二叉搜索树的个数。为此，我们可以定义两个函数：</p>
+<ol>
+<li><em>G</em>(<em>n</em>): 长度为 <em>n</em> 的序列能构成的不同二叉搜索树的个数。</li>
+<li><em>F</em>(<em>i</em>,<em>n</em>): 以 <em>i</em> 为根、序列长度为 <em>n</em> 的不同二叉搜索树个数 (1≤<em>i</em>≤<em>n</em>)。</li>
+</ol>
+<p>可见，<em>G</em>(<em>n</em>) 是我们求解需要的函数。</p>
+<p>稍后我们将看到，<em>G</em>(<em>n</em>) 可以从 <em>F</em>(<em>i</em>,<em>n</em>) 得到，而 <em>F</em>(<em>i</em>,<em>n</em>) 又会递归地依赖于 <em>G</em>(<em>n</em>)。</p>
+<p>首先，根据上一节中的思路，不同的二叉搜索树的总数 <em>G</em>(<em>n</em>)，是对遍历所有 <em>i</em> (1≤<em>i</em>≤<em>n</em>) 的 <em>F</em>(<em>i</em>,<em>n</em>) 之和。换言之：</p>
+<p>$G(n) = \sum_{i=1}^{n} F(i,n)$</p>
+<p>对于边界情况，当序列长度为 1（只有根）或为 0（空树）时，只有一种情况，即：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(0)=1,G(1)=1</span><br></pre></td></tr></table></figure>
+
+<p>给定序列 1⋯<em>n</em>，我们选择数字 <em>i</em> 作为根，则根为 <em>i</em> 的所有二叉搜索树的集合是左子树集合和右子树集合的<strong>笛卡尔积</strong>，对于笛卡尔积中的每个元素，加上根节点之后形成完整的二叉搜索树，如下图所示：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202512151549428.png" alt="fig1"></p>
+<p>举例而言，创建以 3 为根、长度为 7 的不同二叉搜索树，整个序列是 [1,2,3,4,5,6,7]，我们需要从左子序列 [1,2] 构建左子树，从右子序列 [4,5,6,7] 构建右子树，然后将它们组合（即笛卡尔积）。</p>
+<p>对于这个例子，不同二叉搜索树的个数为 <em>F</em>(3,7)。我们将 [1,2] 构建不同左子树的数量表示为 <em>G</em>(2), 从 [4,5,6,7] 构建不同右子树的数量表示为 <em>G</em>(4)，注意到 <em>G</em>(<em>n</em>) 和序列的内容无关，只和序列的长度有关。于是，<em>F</em>(3,7)=<em>G</em>(2)⋅<em>G</em>(4)。 因此，我们可以得到以下公式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">F(i,n)=G(i−1)⋅G(n−i)</span><br></pre></td></tr></table></figure>
+
+<p>将公式 (1)，(2) 结合，可以得到 <em>G</em>(<em>n</em>) 的递归表达式：</p>
+<p>$G(n) = \sum_{i=1}^{n} G(i-1) \cdot G(n-i)$</p>
+<p>至此，我们从小到大计算 <em>G</em> 函数即可，因为 <em>G</em>(<em>n</em>) 的值依赖于 <em>G</em>(0)⋯<em>G</em>(<em>n</em>−1)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numTrees</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[] G = <span class="keyword">new</span> <span class="title class_">int</span>[n + <span class="number">1</span>];</span><br><span class="line">        G[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        G[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= i; ++j) &#123;</span><br><span class="line">                G[i] += G[j - <span class="number">1</span>] * G[i - j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> G[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>复杂度分析</strong></p>
+<ul>
+<li>时间复杂度 : <em>O</em>(<em>n</em>2)，其中 <em>n</em> 表示二叉搜索树的节点个数。<em>G</em>(<em>n</em>) 函数一共有 <em>n</em> 个值需要求解，每次求解需要 <em>O</em>(<em>n</em>) 的时间复杂度，因此总时间复杂度为 <em>O</em>(<em>n</em>2)。</li>
+<li>空间复杂度 : <em>O</em>(<em>n</em>)。我们需要 <em>O</em>(<em>n</em>) 的空间存储 <em>G</em> 数组。</li>
+</ul>
+<h2 id="清晰解释"><a href="#清晰解释" class="headerlink" title="清晰解释"></a>清晰解释</h2><ul>
+<li>假设 <code>n</code> 个节点存在二叉排序树的个数是 <code>G (n)</code>，令 <code>f(i)</code> 为以 <code>i</code> 为根的二叉搜索树的个数，则</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">G(n)=f(1)+f(2)+f(3)+f(4)+...+f(n)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>当 <code>i</code> 为根节点时，其左子树节点个数为 <code>i-1</code> 个，右子树节点为 <code>n-i</code>，则</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(i)=G(i−1)∗G(n−i)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>难点就在于</p>
+<p>f(i)=G(i−1)∗G(n−i)</p>
+<p>这个地方。</p>
+<p>首先，这个公式翻译一下就是以i为根节点的二叉搜索树的数量等于以i-1的总数的二叉搜索树的数量乘以以n-i的二叉搜索树的数量。</p>
+<p>什么意思呢？</p>
+<p>意思就是</p>
+<p>假设有n=100,i=50，那么就有以50这个数字为根节点的二叉搜索树的数量等于以49为总数的二叉搜索树的数量乘以以50为总数的二叉搜索树的数量。注意，此时50和49和50，三个数字代表的是不同的意义，第一个50是根节点，第二个49是总数，第三个50还是总数。</p>
+<p>想象一下，50这个数字的左边，很明显仅能够从1到49这49个数字进行挑选，这很好理解，因为二叉搜索树的左子树的所有值都必须小于根节点，它们继续在50的左子树下面排列组合，得出的最终各种排列的总数就是G(49)。重点在后面，在50这个数字的根节点的右边，很显然只能是51到100，这50个数字进行排列组合，此时很多人不理解，为什么51到100的排列组合的总数等于G(50)，G(50)从字面意义上看，也就是从0到50的排列组合的总数。</p>
+<p>其实道理很简单，将51到100这些数字排列组合的总数，是等于从0到50的排列组合的总数的，因为将51替换为1，将52替换为2，以此类推下去，将100替换为50，就很容易理解了，因为本质上就是50个从大到小的不同的数进行二叉树的排列组合，不论是1001到1050，还是从51到100，所排列组合的二叉树数量是一样的。</p>
+<p>所以，这也就解释了这个公式为什么是f(50) = G(49) * G(50)，因为在50这个根节点的左边，有1到49这些数字在不断进行排列组合得出总的排列组合数，在50的右边，有51到100这些数字同样的在不断的进行排列组合得出总的排列组合数，自然而然的，50作为根节点时，所能得到的不同组合，就是G(49) * G(50)了。</p>
+<h3 id="第一步：为什么需要「计算-i-个节点的情况」？"><a href="#第一步：为什么需要「计算-i-个节点的情况」？" class="headerlink" title="第一步：为什么需要「计算 i 个节点的情况」？"></a>第一步：为什么需要「计算 i 个节点的情况」？</h3><p>因为这是「动态规划的核心思想：从小到大递推」—— 要算出 <code>N</code> 个节点的二叉搜索树总数（<code>G[N]</code>），必须先知道「比 N 小的所有节点数（1、2、…、N-1）对应的总数」，因为：</p>
+<ul>
+<li>当总节点数是 <code>N</code> 时，选任意 <code>root</code> 作为根，左子树的节点数是 <code>root-1</code>（比如 root=50 时，左子树 49 个节点），右子树的节点数是 <code>N-root</code>（右子树 50 个节点）；</li>
+<li>而左子树 49 个节点的总数是 <code>G[49]</code>，右子树 50 个节点的总数是 <code>G[50]</code> —— 这些都是「比 N 小的节点数对应的结果」，必须提前算好！</li>
+</ul>
+<p>代码里的外层循环 <code>for (int i = 2; i &lt;= n; ++i)</code>，本质就是「依次计算 2 个节点、3 个节点、…、直到 n 个节点的总数」—— 把这些中间结果存到 <code>G</code> 数组里，后面计算更大的 <code>i</code> 时直接复用，不用重复计算。</p>
+<h3 id="第二步：用具体例子帮你打通（N-4，总节点数-4）"><a href="#第二步：用具体例子帮你打通（N-4，总节点数-4）" class="headerlink" title="第二步：用具体例子帮你打通（N=4，总节点数 4）"></a>第二步：用具体例子帮你打通（N=4，总节点数 4）</h3><p>我们跟着代码走一遍，看「i 个节点」的计算是怎么服务于最终 N=4 的：</p>
+<ol>
+<li><p>初始化：<code>G[0]=1</code>（空树，基础 case），<code>G[1]=1</code>（1 个节点，1 种树）；</p>
+</li>
+<li><p>计算i=2</p>
+<p>（2 个节点的总数）：</p>
+<ul>
+<li>枚举根节点 <code>j=1</code>：左 0 个（<code>G[0]</code>），右 1 个（<code>G[1]</code>）→ 贡献 1*1=1；</li>
+<li>枚举根节点 <code>j=2</code>：左 1 个（<code>G[1]</code>），右 0 个（<code>G[0]</code>）→ 贡献 1*1=1；</li>
+<li>得 <code>G[2] = 1+1=2</code>（2 个节点有 2 种树）；</li>
+</ul>
+</li>
+<li><p>计算i=3</p>
+<p>（3 个节点的总数）：</p>
+<ul>
+<li>枚举 <code>j=1</code>：左 0→G [0]，右 2→G [2] → 1*2=2；</li>
+<li>枚举 <code>j=2</code>：左 1→G [1]，右 1→G [1] →1*1=1；</li>
+<li>枚举 <code>j=3</code>：左 2→G [2]，右 0→G [0] →2*1=2；</li>
+<li>得 <code>G[3] = 2+1+2=5</code>（3 个节点有 5 种树）；</li>
+</ul>
+</li>
+<li><p>计算i=4</p>
+<p>（最终要的 4 个节点总数）：</p>
+<ul>
+<li>枚举 <code>j=1</code>：左 0→G [0]，右 3→G [3] →1*5=5；</li>
+<li>枚举 <code>j=2</code>：左 1→G [1]，右 2→G [2] →1*2=2；</li>
+<li>枚举 <code>j=3</code>：左 2→G [2]，右 1→G [1] →2*1=2；</li>
+<li>枚举 <code>j=4</code>：左 3→G [3]，右 0→G [0] →5*1=5；</li>
+<li>得 <code>G[4] =5+2+2+5=14</code>（4 个节点有 14 种树）；</li>
+</ul>
+</li>
+</ol>
+<p>你看：计算 <code>i=4</code> 时，完全依赖之前算好的 <code>G[0]、G[1]、G[2]、G[3]</code> —— 这就是为什么需要「先算 i 个节点的情况」：<strong>用小问题的答案，拼出大问题的答案</strong>！</p>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">zhangzhang</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/')">（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees&amp;url=http://example.com/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/&amp;pic=https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">zhangzhang-blog</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/%E7%AE%97%E6%B3%95/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>算法<span class="tagsPageCount">148</span></a><a class="post-meta__box__tags" href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>树和二叉树<span class="tagsPageCount">15</span></a><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">50</span></a><a class="post-meta__box__tags" href="/tags/LeetCode/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>LeetCode<span class="tagsPageCount">47</span></a><a class="post-meta__box__tags" href="/tags/DP/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>DP<span class="tagsPageCount">8</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=290df112-f150-9da5-b23b-34c6c6b42ab3" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8979.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%E2%80%94%E2%80%94word-search/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=46fee01d-4f2f-503b-3b6f-b42f35c49043" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">（LeetCodeHot100）79. 单词搜索——word-search</div></div></a></div><div class="next-post pull-right"><a href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8998.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94validate-binary-search-tree/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=4ee28a7f-9e28-8c2e-be49-5e3485462c8e" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2025/11/12/%EF%BC%88LeetCodeHot100%EF%BC%89121.%20%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA%E2%80%94%E2%80%94best-time-to-buy-and-sell-stock/" title="（LeetCodeHot100）121. 买卖股票的最佳时机——best-time-to-buy-and-sell-stock"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=178afb05-5213-bef2-95fa-9f9264661442" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-12</div><div class="title">（LeetCodeHot100）121. 买卖股票的最佳时机——best-time-to-buy-and-sell-stock</div></div></a></div><div><a href="/2025/11/19/%EF%BC%88LeetCodeHot100%EF%BC%8911.%20%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8%E2%80%94%E2%80%94container-with-most-water/" title="（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=d9d771e5-b68f-8ae2-69e4-214356c351d8" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-19</div><div class="title">（LeetCodeHot100）11. 盛最多水的容器——container-with-most-water</div></div></a></div><div><a href="/2025/12/10/%EF%BC%88LeetCodeHot100%EF%BC%8953.%20%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%E2%80%94%E2%80%94maximum-subarray/" title="（LeetCodeHot100）53. 最大子数组和——maximum-subarray"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=0a628cfd-01c8-891b-06e8-bcf5b07c24d3" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-10</div><div class="title">（LeetCodeHot100）53. 最大子数组和——maximum-subarray</div></div></a></div><div><a href="/2025/12/12/%EF%BC%88LeetCodeHot100%EF%BC%8962.%20%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84%E2%80%94%E2%80%94unique-paths/" title="（LeetCodeHot100）62. 不同路径——unique-paths"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=ca8230f2-cbb0-4a46-62f6-36935593ca13" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-12</div><div class="title">（LeetCodeHot100）62. 不同路径——unique-paths</div></div></a></div><div><a href="/2025/12/13/%EF%BC%88LeetCodeHot100%EF%BC%8964.%20%E6%9C%80%E5%B0%8F%E8%B7%AF%E5%BE%84%E5%92%8C%E2%80%94%E2%80%94minimum-path-sum/" title="（LeetCodeHot100）64. 最小路径和——minimum-path-sum"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=ccff085a-b056-ee0b-11f6-eb8009b80111" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-12-13</div><div class="title">（LeetCodeHot100）64. 最小路径和——minimum-path-sum</div></div></a></div><div><a href="/2025/11/11/%EF%BC%88LeetCodeHot100%EF%BC%8970.%20%E7%88%AC%E6%A5%BC%E6%A2%AF%E2%80%94%E2%80%94climbing-stairs/" title="（LeetCodeHot100）70. 爬楼梯——climbing-stairs"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=5d05454f-49ae-468f-1995-a55e11a85dfb" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2025-11-11</div><div class="title">（LeetCodeHot100）70. 爬楼梯——climbing-stairs</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510132339315.jpg" style="width: 100%; height: auto; display: block; border-radius: 8px;"></div><div id="welcome-info"></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#96-%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees"><span class="toc-number">1.</span> <span class="toc-text">96. 不同的二叉搜索树——unique-binary-search-trees</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%83%B3%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">第一想法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E7%AD%94%E6%A1%88"><span class="toc-number">1.2.</span> <span class="toc-text">官方答案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">方法一：动态规划</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E6%99%B0%E8%A7%A3%E9%87%8A"><span class="toc-number">1.3.</span> <span class="toc-text">清晰解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E3%80%8C%E8%AE%A1%E7%AE%97-i-%E4%B8%AA%E8%8A%82%E7%82%B9%E7%9A%84%E6%83%85%E5%86%B5%E3%80%8D%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">第一步：为什么需要「计算 i 个节点的情况」？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E7%94%A8%E5%85%B7%E4%BD%93%E4%BE%8B%E5%AD%90%E5%B8%AE%E4%BD%A0%E6%89%93%E9%80%9A%EF%BC%88N-4%EF%BC%8C%E6%80%BB%E8%8A%82%E7%82%B9%E6%95%B0-4%EF%BC%89"><span class="toc-number">1.3.2.</span> <span class="toc-text">第二步：用具体例子帮你打通（N&#x3D;4，总节点数 4）</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/12/17/%EF%BC%88%E5%A4%8D%E4%B9%A0%EF%BC%89%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%A1%AB%E7%A9%BA/" title="数据结构复习——填空"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=290df112-f150-9da5-b23b-34c6c6b42ab3" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="数据结构复习——填空"/></a><div class="content"><a class="title" href="/2025/12/17/%EF%BC%88%E5%A4%8D%E4%B9%A0%EF%BC%89%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0%E2%80%94%E2%80%94%E5%A1%AB%E7%A9%BA/" title="数据结构复习——填空">数据结构复习——填空</a><time datetime="2025-12-17T01:26:00.000Z" title="发表于 2025-12-17 09:26:00">2025-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8998.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94validate-binary-search-tree/" title="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=4ee28a7f-9e28-8c2e-be49-5e3485462c8e" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8998.%20%E9%AA%8C%E8%AF%81%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94validate-binary-search-tree/" title="（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree">（LeetCodeHot100）98. 验证二叉搜索树——validate-binary-search-tree</a><time datetime="2025-12-15T07:32:00.000Z" title="发表于 2025-12-15 15:32:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/" title="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=08d8ef4d-b3fc-1255-5bf1-43760899cf54" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8996.%20%E4%B8%8D%E5%90%8C%E7%9A%84%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E2%80%94%E2%80%94unique-binary-search-trees/" title="（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees">（LeetCodeHot100）96. 不同的二叉搜索树——unique-binary-search-trees</a><time datetime="2025-12-15T05:51:00.000Z" title="发表于 2025-12-15 13:51:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8979.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%E2%80%94%E2%80%94word-search/" title="（LeetCodeHot100）79. 单词搜索——word-search"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=46fee01d-4f2f-503b-3b6f-b42f35c49043" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）79. 单词搜索——word-search"/></a><div class="content"><a class="title" href="/2025/12/15/%EF%BC%88LeetCodeHot100%EF%BC%8979.%20%E5%8D%95%E8%AF%8D%E6%90%9C%E7%B4%A2%E2%80%94%E2%80%94word-search/" title="（LeetCodeHot100）79. 单词搜索——word-search">（LeetCodeHot100）79. 单词搜索——word-search</a><time datetime="2025-12-15T02:13:00.000Z" title="发表于 2025-12-15 10:13:00">2025-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/12/14/%EF%BC%88LeetCodeHot100%EF%BC%8978.%20%E5%AD%90%E9%9B%86%E2%80%94%E2%80%94subsets/" title="（LeetCodeHot100）78. 子集——subsets"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://zhangzhanglaila.oss-cn-beijing.aliyuncs.com/202510152221253.JPG?_r_=03cba674-0c66-d0be-70f2-2e33be6b2ef2" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="（LeetCodeHot100）78. 子集——subsets"/></a><div class="content"><a class="title" href="/2025/12/14/%EF%BC%88LeetCodeHot100%EF%BC%8978.%20%E5%AD%90%E9%9B%86%E2%80%94%E2%80%94subsets/" title="（LeetCodeHot100）78. 子集——subsets">（LeetCodeHot100）78. 子集——subsets</a><time datetime="2025-12-14T07:28:00.000Z" title="发表于 2025-12-14 15:28:00">2025-12-14</time></div></div></div></div><div class="card-widget card-map"><div class="card-content"><div class="item-headline"><i class="fa fa-globe-asia" aria-hidden="true"></i><span>访客地图</span></div><script id="clstr_globe" type="text/javascript" defer="defer" src="//clustrmaps.com/globe.js?d=NrKXiqwOJfxSliMr6I1UmdORp6XDbtPAqaHcIkDWbOc"></script></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="zhangzhang" target="_blank">zhangzhang</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">169</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">56</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">7</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/BFS/" style="font-size: 0.88rem;">BFS<sup>4</sup></a><a href="/tags/Boyer-Moore/" style="font-size: 0.88rem;">Boyer-Moore<sup>1</sup></a><a href="/tags/DFS/" style="font-size: 0.88rem;">DFS<sup>11</sup></a><a href="/tags/DP/" style="font-size: 0.88rem;">DP<sup>8</sup></a><a href="/tags/Hash/" style="font-size: 0.88rem;">Hash<sup>10</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>50</sup></a><a href="/tags/Kadane-%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">Kadane 算法<sup>1</sup></a><a href="/tags/LeetCode/" style="font-size: 0.88rem;">LeetCode<sup>47</sup></a><a href="/tags/MySQL/" style="font-size: 0.88rem;">MySQL<sup>1</sup></a><a href="/tags/PTA/" style="font-size: 0.88rem;">PTA<sup>93</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c<sup>28</sup></a><a href="/tags/c/" style="font-size: 0.88rem;">c++<sup>75</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/vim/" style="font-size: 0.88rem;">vim<sup>1</sup></a><a href="/tags/%E4%B8%89%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">三指针<sup>5</sup></a><a href="/tags/%E4%B8%B2/" style="font-size: 0.88rem;">串<sup>2</sup></a><a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">二叉树<sup>6</sup></a><a href="/tags/%E4%BD%9C%E4%B8%9A/" style="font-size: 0.88rem;">作业<sup>73</sup></a><a href="/tags/%E5%85%B1%E4%BA%AB%E6%A0%88/" style="font-size: 0.88rem;">共享栈<sup>1</sup></a><a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">双指针<sup>20</sup></a><a href="/tags/%E5%9B%9E%E6%BA%AF/" style="font-size: 0.88rem;">回溯<sup>6</sup></a><a href="/tags/%E5%9B%BE/" style="font-size: 0.88rem;">图<sup>8</sup></a><a href="/tags/%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" style="font-size: 0.88rem;">图床搭建<sup>1</sup></a><a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 0.88rem;">复习<sup>6</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 0.88rem;">工具<sup>9</sup></a><a href="/tags/%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88/" style="font-size: 0.88rem;">快慢指针<sup>6</sup></a><a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 0.88rem;">插件<sup>1</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>98</sup></a><a href="/tags/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" style="font-size: 0.88rem;">栈和队列<sup>22</sup></a><a href="/tags/%E6%A0%91%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91/" style="font-size: 0.88rem;">树和二叉树<sup>15</sup></a><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 0.88rem;">生活<sup>1</sup></a><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 0.88rem;">笔记<sup>4</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>148</sup></a><a href="/tags/%E7%BA%BF%E6%80%A7%E8%A1%A8/" style="font-size: 0.88rem;">线性表<sup>1</sup></a><a href="/tags/%E7%BC%93%E5%AD%98%E9%97%AE%E9%A2%98/" style="font-size: 0.88rem;">缓存问题<sup>1</sup></a><a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 0.88rem;">贪心<sup>2</sup></a><a href="/tags/%E9%80%92%E5%BD%92/" style="font-size: 0.88rem;">递归<sup>1</sup></a><a href="/tags/%E9%93%BE%E8%A1%A8/" style="font-size: 0.88rem;">链表<sup>34</sup></a><a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/" style="font-size: 0.88rem;">阿里云<sup>1</sup></a><a href="/tags/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" style="font-size: 0.88rem;">顺序表<sup>19</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.14",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 zhangzhang 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script async data-pjax src="/js/txmap.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/canvas-nest.min.js"></script><script id="click-heart" src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="true"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
